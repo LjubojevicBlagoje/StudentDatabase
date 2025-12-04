@@ -14,7 +14,8 @@ class Database {
  public:
   Database();  // Initialise
   void addStudent(Student* student);
-  void removeStudent(std::string id);  // Remove student with this id
+  void removeStudent(std::string id);        // Remove student with this id
+  void printStudentDetails(std::string id);  // Print student details
 };
 
-#endif;
+#endif

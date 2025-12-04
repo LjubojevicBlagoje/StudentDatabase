@@ -11,11 +11,27 @@ Database::Database() {
 void Database::addStudent(Student* student) { students.push_back(student); };
 
 void Database::removeStudent(std::string id) {
-  for (int i = 0; i < students.size(); i++) { // Loop through the students vector
-    if (students[i]->getId() == id) { // If student at index i matches id
-      delete students[i];                    // Free memory
-      students.erase(students.begin() + i);  // Remove pointer from the vector
+  // Loop through the students vector untill matching id is found
+  for (int i = 0; i < students.size(); i++) {
+    if (students[i]->getId() == id) {
+      students.erase(students.begin() + i);  // Remove student from the vector
       return;
     }
   }
+  std::cout << "Could not locate student"
+            << std::endl;  // If no matching student is found
 };
+
+void Database::printStudentDetails(std::string id) {
+  // Loop through the students vector untill matching id is found
+  for (int i = 0; i < students.size(); i++) {
+    if (students[i]->getId() == id) {
+      // Print student details
+      std::cout << "ID: " << students[i]->getId() << " | Semesters Completed: "
+                << students[i]->getSemestersCompleted() << std::endl;
+      return;
+    }
+  }
+  std::cout << "Could not locate student"
+            << std::endl;  // If no matching student is found
+}
