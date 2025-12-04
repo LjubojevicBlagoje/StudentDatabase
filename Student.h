@@ -11,8 +11,8 @@ class Student {
   int semestersCompleted;
 
  public:
-  Student(std::string id, int semestersCompleted); 
-  std::string getId();
-  int getSemestersCompleted();
+  Student(const std::string& id, int semestersCompleted);
+  const std::string& getId() const;
+  int getSemestersCompleted() const;
 };
 #endif

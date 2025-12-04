@@ -1,11 +1,11 @@
 #include "Student.h"
 
-Student::Student(std::string id, int semestersCompleted) {
-    // Initialise Student object with id and semestersCompleted
+Student::Student(const std::string& id, int semestersCompleted) {
+  // Initialise Student object with id and semestersCompleted
   this->id = id;
   this->semestersCompleted = semestersCompleted;
 };
 
-std::string Student::getId() { return id; }
+const std::string& Student::getId() const { return id; }
 
-int Student::getSemestersCompleted() { return semestersCompleted; }
+int Student::getSemestersCompleted() const { return semestersCompleted; }
