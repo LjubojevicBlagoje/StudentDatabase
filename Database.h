@@ -7,13 +7,13 @@
 
 class Database {
  private:
-  // Initialise a blank vector to which students will be added
-  std::vector<Student*> students;
+  // Initialise a vector of students (smart pointers)
+  std::vector<std::unique_ptr<Student>> students;
   int numberOfStudents;
 
  public:
   Database();  // Initialise
-  void addStudent(Student* student);
+  void addStudent(std::unique_ptr<Student> student);
   void removeStudent(std::string id);        // Remove student with this id
   void printStudentDetails(std::string id);  // Print student details
 };
