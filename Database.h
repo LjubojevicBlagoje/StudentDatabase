@@ -7,13 +7,14 @@
 
 class Database {
  private:
+  // Initialise a blank vector to which students will be added
   std::vector<Student*> students;
   int numberOfStudents;
 
-  public:
-  Database();
+ public:
+  Database();  // Initialise
   void addStudent(Student* student);
-  void removeStudent(std::string id);
+  void removeStudent(std::string id);  // Remove student with this id
 };
 
 #endif;
