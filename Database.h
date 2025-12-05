@@ -14,7 +14,7 @@ class Database {
   Database();  // Initialise
   void addStudent(std::unique_ptr<Student> student);
   void removeStudent(const std::string& id);  // Remove student with this id
-  void printStudentDetails(const std::string& id);  // Print student details
+  const Student* findStudentById(const std::string& id);
 };
 
 #endif
