@@ -64,7 +64,22 @@ const Course* Database::findCourseByCode(const std::string& code) const {
 void Database::enrollStudentInCourse(const std::string& studentId,
                                      const std::string& courseCode, int year,
                                      const std::string& term, double grade) {
-  // TODO !!!
+  // Check if student exists
+  const Student* student = findStudentById(studentId);
+  if (!student) {
+    std::cout << "Cannot enroll: student " << studentId << " not found\n";
+    return;
+  }
+
+  // Check if course exists
+  const Course* course = findCourseByCode(courseCode);
+  if (!course) {
+    std::cout << "Cannot enroll: course " << courseCode << " not found\n";
+    return;
+  }
+
+  // Add the enrollment
+  enrollments.emplace_back(studentId, courseCode, year, term, grade);
 };
 
 std::vector<Enrollment> Database::getEnrollmentsForStudent(
