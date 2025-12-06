@@ -2,6 +2,7 @@
 #define ENROLMENT_H
 
 #include <iostream>
+#include <string>
 
 class Enrollment {
  private:

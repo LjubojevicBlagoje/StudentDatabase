@@ -1,6 +1,7 @@
 #ifndef DATABASE_H
 #define DATABASE_H
 
+#include <memory>
 #include <vector>
 
 #include "Course.h"
@@ -11,6 +12,7 @@ class Database {
  private:
   // Initialise a vector of students (smart pointers)
   std::vector<std::unique_ptr<Student>> students;
+  // Initialise vectors of courses and enrollments
   std::vector<Course> courses;
   std::vector<Enrollment> enrollments;
 
