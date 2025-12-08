@@ -92,6 +92,38 @@ std::vector<Enrollment> Database::getEnrollmentsForStudent(
   return result;
 };
 
+bool Database::dropStudentFromCourse(const std::string& studentId,
+                                     const std::string& courseCode, int year,
+                                     const std::string& term) {
+  // Iterate through enrollments vector untill enrollment with matching criteria
+  // is found, then delete the enrollment
+  for (int i = 0; i < enrollments.size(); i++) {
+    if (enrollments[i].getStudentId() == studentId &&
+        enrollments[i].getCourseCode() == courseCode &&
+        enrollments[i].getYear() == year && enrollments[i].getTerm() == term) {
+      enrollments.erase(enrollments.begin() + i);
+      return 1;
+    }
+  }
+  return 0;
+}
+
+bool Database::updateGrade(const std::string& studentId,
+                           const std::string& courseCode, int year,
+                           const std::string& term, double newGrade) {
+  // Iterate through enrollments vector untill enrollment with matching criteria
+  // is found, then update grade
+  for (int i = 0; i < enrollments.size(); i++) {
+    if (enrollments[i].getStudentId() == studentId &&
+        enrollments[i].getCourseCode() == courseCode &&
+        enrollments[i].getYear() == year && enrollments[i].getTerm() == term) {
+      enrollments[i].setGrade(newGrade);
+      return 1;
+    }
+  }
+  return 0;
+}
+
 // Compute GPA
 double Database::computeGpaForStudent(const std::string& studentId) const {
   double totalWeighted = 0.0;

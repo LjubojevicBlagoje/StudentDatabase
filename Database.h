@@ -36,6 +36,13 @@ class Database {
   std::vector<Enrollment> getEnrollmentsForStudent(
       const std::string& studentId) const;
 
+  bool dropStudentFromCourse(const std::string& studentId,
+                             const std::string& courseCode, int year,
+                             const std::string& term);
+
+  bool updateGrade(const std::string& studentId, const std::string& courseCode,
+                   int year, const std::string& term, double newGrade);
+
   // Compute GPA
   double computeGpaForStudent(const std::string& studentId) const;
 };
