@@ -12,16 +12,15 @@ void Database::addStudent(std::unique_ptr<Student> student) {
       std::move(student));  // add student to vector (transfer ownership)
 };
 
-void Database::removeStudent(const std::string& id) {
+bool Database::removeStudent(const std::string& id) {
   // Loop through the students vector untill matching id is found
   for (int i = 0; i < students.size(); i++) {
     if (students[i]->getId() == id) {
       students.erase(students.begin() + i);  // Remove student from the vector
-      return;
+      return 1;
     }
   }
-  std::cout << "Could not locate student"
-            << std::endl;  // If no matching student is found
+  return 0;  // If no matching student is found
 };
 
 const Student* Database::findStudentById(const std::string& id) {
@@ -38,16 +37,16 @@ const Student* Database::findStudentById(const std::string& id) {
 // ---------- Courses ----------
 void Database::addCourse(const Course& course) { courses.push_back(course); }
 
-void Database::removeCourse(const std::string code) {
+bool Database::removeCourse(const std::string code) {
   // Loop through courses untill matching course code is found
   for (int i = 0; i < courses.size(); i++) {
     if (courses[i].getCode() == code) {
       courses.erase(courses.begin() + i);
+      return 1;
     }
-    std::cout << "Course does not exist"
-              << std::endl;  // If such course is not found
   }
-}
+  return 0;  // If such course is not found
+};
 
 const Course* Database::findCourseByCode(const std::string& code) const {
   // Loop through the courses vector untill matching id is found
@@ -61,25 +60,24 @@ const Course* Database::findCourseByCode(const std::string& code) const {
 };
 
 // ---------- Enrollments ----------
-void Database::enrollStudentInCourse(const std::string& studentId,
+bool Database::enrollStudentInCourse(const std::string& studentId,
                                      const std::string& courseCode, int year,
                                      const std::string& term, double grade) {
   // Check if student exists
   const Student* student = findStudentById(studentId);
   if (!student) {
-    std::cout << "Cannot enroll: student " << studentId << " not found\n";
-    return;
+    return 0;
   }
 
   // Check if course exists
   const Course* course = findCourseByCode(courseCode);
   if (!course) {
-    std::cout << "Cannot enroll: course " << courseCode << " not found\n";
-    return;
+    return 0;
   }
 
   // Add the enrollment
   enrollments.emplace_back(studentId, courseCode, year, term, grade);
+  return 1;
 };
 
 std::vector<Enrollment> Database::getEnrollmentsForStudent(

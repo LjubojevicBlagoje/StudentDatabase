@@ -21,16 +21,16 @@ class Database {
 
   // Students
   void addStudent(std::unique_ptr<Student> student);
-  void removeStudent(const std::string& id);  // Remove student with this id
+  bool removeStudent(const std::string& id);  // Remove student with this id
   const Student* findStudentById(const std::string& id);
 
   // Courses
   void addCourse(const Course& course);
-  void removeCourse(const std::string code);
+  bool removeCourse(const std::string code);
   const Course* findCourseByCode(const std::string& code) const;
 
   // Enrollments
-  void enrollStudentInCourse(const std::string& studentId,
+  bool enrollStudentInCourse(const std::string& studentId,
                              const std::string& courseCode, int year,
                              const std::string& term, double grade);
   std::vector<Enrollment> getEnrollmentsForStudent(
