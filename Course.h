@@ -1,8 +1,6 @@
 #ifndef COURSE_H
 #define COURSE_H
 
-#include <iostream>
-
 class Course {
  private:
   std::string code;  // e.g. COMP SCI 1101

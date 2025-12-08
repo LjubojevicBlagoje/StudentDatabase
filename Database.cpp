@@ -7,9 +7,16 @@ Database::Database() {};
 
 // ---------- Students ----------
 
-void Database::addStudent(std::unique_ptr<Student> student) {
+bool Database::addStudent(std::unique_ptr<Student> student) {
+  Student* s = student.get();  // Convert to raw pointer to check if this
+                               // student already exists
+  if (studentExists(s->getId())) {
+    // If student already exists exit here (do not add)
+    return 0;
+  }
   students.push_back(
       std::move(student));  // add student to vector (transfer ownership)
+  return 1;
 };
 
 bool Database::removeStudent(const std::string& id) {
@@ -35,9 +42,15 @@ const Student* Database::findStudentById(const std::string& id) const {
 }
 
 // ---------- Courses ----------
-void Database::addCourse(const Course& course) { courses.push_back(course); }
+bool Database::addCourse(const Course& course) {
+  if (courseExists(course.getCode())) {  // Check if course already exists
+    return 0;                            // If exists, exit (do not add)
+  }
+  courses.push_back(course);
+  return 1;
+}
 
-bool Database::removeCourse(const std::string code) {
+bool Database::removeCourse(const std::string& code) {
   // Loop through courses untill matching course code is found
   for (int i = 0; i < courses.size(); i++) {
     if (courses[i].getCode() == code) {
@@ -72,6 +85,11 @@ bool Database::enrollStudentInCourse(const std::string& studentId,
   // Check if course exists
   const Course* course = findCourseByCode(courseCode);
   if (!course) {
+    return 0;
+  }
+
+  // Check if student is already enrolled in this course
+  if (isStudentEnrolledIn(studentId, courseCode, year, term) == 1) {
     return 0;
   }
 
@@ -190,14 +208,16 @@ std::vector<const Student*> Database::getStudentsInCourse(
   for (int i = 0; i < enrollments.size(); i++) {
     if (enrollments[i].getCourseCode() == courseCode &&
         enrollments[i].getYear() == year && enrollments[i].getTerm() == term) {
-      std::string id =
-          enrollments[i].getStudentId();  // Store ID of the enrolled student
-      const Student* enrolledStudent =
-          findStudentById(id);  // Find the pointer to student with this ID and
-                                // assign it to enrolledStudent
-      studentsInCourse.push_back(
-          enrolledStudent);  // Add enrolledStudent to the studentsInCourse
-                             // vector
+      // Store ID of the enrolled student
+      std::string id = enrollments[i].getStudentId();
+      // Find the pointer to student with this ID and assign it to
+      // enrolledStudent
+      const Student* enrolledStudent;
+      if (findStudentById(id) != nullptr) {
+        enrolledStudent = findStudentById(id);
+      }
+      // Add enrolledStudent to the studentsInCourse vector
+      studentsInCourse.push_back(enrolledStudent);
     }
   }
   return studentsInCourse;
@@ -216,6 +236,11 @@ double Database::getCourseAverage(const std::string& courseCode, int year,
           enrollments[i].getGrade();  // Add the grade value to aggregateGrade
       recordedGrades++;               // Increment count of recorded grades
     }
+  }
+
+  if (recordedGrades == 0) {  // If no grades have been recorded for this course
+                              // return 0.0 to prevent undefined behaviour
+    return 0.0;
   }
   return aggregateGrade /
          recordedGrades;  // Return the average grade for this course

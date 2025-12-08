@@ -1,5 +1,5 @@
-#ifndef ENROLMENT_H
-#define ENROLMENT_H
+#ifndef ENROLLMENT_H
+#define ENROLLMENT_H
 
 #include <iostream>
 #include <string>

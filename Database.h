@@ -20,13 +20,13 @@ class Database {
   Database();  // Initialise
 
   // Students
-  void addStudent(std::unique_ptr<Student> student);
+  bool addStudent(std::unique_ptr<Student> student);
   bool removeStudent(const std::string& id);  // Remove student with this id
   const Student* findStudentById(const std::string& id) const;
 
   // Courses
-  void addCourse(const Course& course);
-  bool removeCourse(const std::string code);
+  bool addCourse(const Course& course);
+  bool removeCourse(const std::string& code);
   const Course* findCourseByCode(const std::string& code) const;
 
   // Enrollments
