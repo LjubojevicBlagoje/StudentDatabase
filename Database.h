@@ -22,7 +22,7 @@ class Database {
   // Students
   void addStudent(std::unique_ptr<Student> student);
   bool removeStudent(const std::string& id);  // Remove student with this id
-  const Student* findStudentById(const std::string& id);
+  const Student* findStudentById(const std::string& id) const;
 
   // Courses
   void addCourse(const Course& course);
@@ -52,6 +52,13 @@ class Database {
   bool isStudentEnrolledIn(const std::string& studentId,
                            const std::string& courseCode, int year,
                            const std::string& term) const;
+
+  // Queries/Reports
+  std::vector<const Student*> getStudentsInCourse(
+      const std::string& courseCode, int year, const std::string& term) const;
+
+  double getCourseAverage(const std::string& courseCode, int year,
+                          const std::string& term) const;
 };
 
 #endif

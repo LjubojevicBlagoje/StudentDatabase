@@ -23,7 +23,7 @@ bool Database::removeStudent(const std::string& id) {
   return 0;  // If no matching student is found
 };
 
-const Student* Database::findStudentById(const std::string& id) {
+const Student* Database::findStudentById(const std::string& id) const {
   // Loop through the students vector untill matching id is found
   for (int i = 0; i < students.size(); i++) {
     if (students[i]->getId() == id) {
@@ -178,3 +178,45 @@ bool Database::isStudentEnrolledIn(const std::string& studentId,
   }
   return 0;
 }
+
+// ---------- Queries/Reports ----------
+
+// Return a vector containing all students enrolled in a specific course
+std::vector<const Student*> Database::getStudentsInCourse(
+    const std::string& courseCode, int year, const std::string& term) const {
+  // Initialise a vector to store pointers to student objects
+  std::vector<const Student*> studentsInCourse;
+  // Iterate through enrollments untill course code, year, and term match
+  for (int i = 0; i < enrollments.size(); i++) {
+    if (enrollments[i].getCourseCode() == courseCode &&
+        enrollments[i].getYear() == year && enrollments[i].getTerm() == term) {
+      std::string id =
+          enrollments[i].getStudentId();  // Store ID of the enrolled student
+      const Student* enrolledStudent =
+          findStudentById(id);  // Find the pointer to student with this ID and
+                                // assign it to enrolledStudent
+      studentsInCourse.push_back(
+          enrolledStudent);  // Add enrolledStudent to the studentsInCourse
+                             // vector
+    }
+  }
+  return studentsInCourse;
+};
+
+// Find average GPA for a course
+double Database::getCourseAverage(const std::string& courseCode, int year,
+                                  const std::string& term) const {
+  double aggregateGrade = 0;
+  int recordedGrades = 0;
+  // Iterate through enrollments untill course code, year, and term match
+  for (int i = 0; i < enrollments.size(); i++) {
+    if (enrollments[i].getCourseCode() == courseCode &&
+        enrollments[i].getYear() == year && enrollments[i].getTerm() == term) {
+      aggregateGrade +=
+          enrollments[i].getGrade();  // Add the grade value to aggregateGrade
+      recordedGrades++;               // Increment count of recorded grades
+    }
+  }
+  return aggregateGrade /
+         recordedGrades;  // Return the average grade for this course
+};
