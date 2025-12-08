@@ -12,11 +12,11 @@ bool Database::addStudent(std::unique_ptr<Student> student) {
                                // student already exists
   if (studentExists(s->getId())) {
     // If student already exists exit here (do not add)
-    return 0;
+    return false;
   }
   students.push_back(
       std::move(student));  // add student to vector (transfer ownership)
-  return 1;
+  return true;
 };
 
 bool Database::removeStudent(const std::string& id) {
@@ -24,10 +24,10 @@ bool Database::removeStudent(const std::string& id) {
   for (int i = 0; i < students.size(); i++) {
     if (students[i]->getId() == id) {
       students.erase(students.begin() + i);  // Remove student from the vector
-      return 1;
+      return true;
     }
   }
-  return 0;  // If no matching student is found
+  return false;  // If no matching student is found
 };
 
 const Student* Database::findStudentById(const std::string& id) const {
@@ -44,10 +44,10 @@ const Student* Database::findStudentById(const std::string& id) const {
 // ---------- Courses ----------
 bool Database::addCourse(const Course& course) {
   if (courseExists(course.getCode())) {  // Check if course already exists
-    return 0;                            // If exists, exit (do not add)
+    return false;                        // If exists, exit (do not add)
   }
   courses.push_back(course);
-  return 1;
+  return true;
 }
 
 bool Database::removeCourse(const std::string& code) {
@@ -55,10 +55,10 @@ bool Database::removeCourse(const std::string& code) {
   for (int i = 0; i < courses.size(); i++) {
     if (courses[i].getCode() == code) {
       courses.erase(courses.begin() + i);
-      return 1;
+      return true;
     }
   }
-  return 0;  // If such course is not found
+  return false;  // If such course is not found
 };
 
 const Course* Database::findCourseByCode(const std::string& code) const {
@@ -79,23 +79,23 @@ bool Database::enrollStudentInCourse(const std::string& studentId,
   // Check if student exists
   const Student* student = findStudentById(studentId);
   if (!student) {
-    return 0;
+    return false;
   }
 
   // Check if course exists
   const Course* course = findCourseByCode(courseCode);
   if (!course) {
-    return 0;
+    return false;
   }
 
   // Check if student is already enrolled in this course
   if (isStudentEnrolledIn(studentId, courseCode, year, term) == 1) {
-    return 0;
+    return false;
   }
 
   // Add the enrollment
   enrollments.emplace_back(studentId, courseCode, year, term, grade);
-  return 1;
+  return true;
 };
 
 std::vector<Enrollment> Database::getEnrollmentsForStudent(
@@ -120,10 +120,10 @@ bool Database::dropStudentFromCourse(const std::string& studentId,
         enrollments[i].getCourseCode() == courseCode &&
         enrollments[i].getYear() == year && enrollments[i].getTerm() == term) {
       enrollments.erase(enrollments.begin() + i);
-      return 1;
+      return true;
     }
   }
-  return 0;
+  return false;
 }
 
 bool Database::updateGrade(const std::string& studentId,
@@ -136,10 +136,10 @@ bool Database::updateGrade(const std::string& studentId,
         enrollments[i].getCourseCode() == courseCode &&
         enrollments[i].getYear() == year && enrollments[i].getTerm() == term) {
       enrollments[i].setGrade(newGrade);
-      return 1;
+      return true;
     }
   }
-  return 0;
+  return false;
 }
 
 // Compute GPA
@@ -166,20 +166,20 @@ bool Database::studentExists(const std::string& id) const {
   // Loop through the students vector untill matching id is found
   for (int i = 0; i < students.size(); i++) {
     if (students[i]->getId() == id) {
-      return 1;  // Student already exists
+      return true;  // Student already exists
     }
   }
-  return 0;
+  return false;
 }
 
 bool Database::courseExists(const std::string& code) const {
   // Iterate through courses vector untill course with matching code is found
   for (int i = 0; i < courses.size(); i++) {
     if (courses[i].getCode() == code) {
-      return 1;  // Course already exists
+      return true;  // Course already exists
     }
   }
-  return 0;
+  return false;
 }
 
 bool Database::isStudentEnrolledIn(const std::string& studentId,
@@ -191,10 +191,10 @@ bool Database::isStudentEnrolledIn(const std::string& studentId,
     if (enrollments[i].getStudentId() == studentId &&
         enrollments[i].getCourseCode() == courseCode &&
         enrollments[i].getYear() == year && enrollments[i].getTerm() == term) {
-      return 1;  // Student already enrolled
+      return true;  // Student already enrolled
     }
   }
-  return 0;
+  return false;
 }
 
 // ---------- Queries/Reports ----------
@@ -212,12 +212,11 @@ std::vector<const Student*> Database::getStudentsInCourse(
       std::string id = enrollments[i].getStudentId();
       // Find the pointer to student with this ID and assign it to
       // enrolledStudent
-      const Student* enrolledStudent;
-      if (findStudentById(id) != nullptr) {
-        enrolledStudent = findStudentById(id);
+      const Student* enrolledStudent = findStudentById(id);
+      if (enrolledStudent != nullptr) {
+        // Add enrolledStudent to the studentsInCourse vector
+        studentsInCourse.push_back(enrolledStudent);
       }
-      // Add enrolledStudent to the studentsInCourse vector
-      studentsInCourse.push_back(enrolledStudent);
     }
   }
   return studentsInCourse;
