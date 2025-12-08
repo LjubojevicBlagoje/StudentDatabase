@@ -142,3 +142,39 @@ double Database::computeGpaForStudent(const std::string& studentId) const {
   if (totalUnits == 0) return 0.0;
   return totalWeighted / totalUnits;  // 0–7 GPA
 }
+
+// ---------- Helpers ----------
+bool Database::studentExists(const std::string& id) const {
+  // Loop through the students vector untill matching id is found
+  for (int i = 0; i < students.size(); i++) {
+    if (students[i]->getId() == id) {
+      return 1;  // Student already exists
+    }
+  }
+  return 0;
+}
+
+bool Database::courseExists(const std::string& code) const {
+  // Iterate through courses vector untill course with matching code is found
+  for (int i = 0; i < courses.size(); i++) {
+    if (courses[i].getCode() == code) {
+      return 1;  // Course already exists
+    }
+  }
+  return 0;
+}
+
+bool Database::isStudentEnrolledIn(const std::string& studentId,
+                                   const std::string& courseCode, int year,
+                                   const std::string& term) const {
+  // Iterate through enrollments untill enrollment with matching criteria is
+  // found
+  for (int i = 0; i < enrollments.size(); i++) {
+    if (enrollments[i].getStudentId() == studentId &&
+        enrollments[i].getCourseCode() == courseCode &&
+        enrollments[i].getYear() == year && enrollments[i].getTerm() == term) {
+      return 1;  // Student already enrolled
+    }
+  }
+  return 0;
+}

@@ -45,6 +45,13 @@ class Database {
 
   // Compute GPA
   double computeGpaForStudent(const std::string& studentId) const;
+
+  // Helpers
+  bool studentExists(const std::string& id) const;
+  bool courseExists(const std::string& code) const;
+  bool isStudentEnrolledIn(const std::string& studentId,
+                           const std::string& courseCode, int year,
+                           const std::string& term) const;
 };
 
 #endif
