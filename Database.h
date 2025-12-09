@@ -23,6 +23,9 @@ class Database {
   bool addStudent(std::unique_ptr<Student> student);
   bool removeStudent(const std::string& id);  // Remove student with this id
   const Student* findStudentById(const std::string& id) const;
+  bool updateStudentName(const std::string& id, const std::string& newFirst,
+                         const std::string& newLast);
+  bool updateSemestersCompleted(const std::string& id, int newCount);
 
   // Courses
   bool addCourse(const Course& course);
@@ -49,6 +52,7 @@ class Database {
   // Helpers
   bool studentExists(const std::string& id) const;
   bool courseExists(const std::string& code) const;
+  const int numberOfStudentsEnrolled(const std::string& code) const; // returns number of students enrolled in a course
   bool isStudentEnrolledIn(const std::string& studentId,
                            const std::string& courseCode, int year,
                            const std::string& term) const;

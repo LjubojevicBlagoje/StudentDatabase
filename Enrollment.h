@@ -1,7 +1,6 @@
 #ifndef ENROLLMENT_H
 #define ENROLLMENT_H
 
-#include <iostream>
 #include <string>
 
 class Enrollment {

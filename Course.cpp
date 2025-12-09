@@ -1,7 +1,5 @@
 #include "Course.h"
 
-#include <iostream>
-
 Course::Course(const std::string& code, const std::string& name, int units)
     : code(code), name(name), units(units) {};
 

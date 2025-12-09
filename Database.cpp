@@ -21,7 +21,7 @@ bool Database::addStudent(std::unique_ptr<Student> student) {
 
 bool Database::removeStudent(const std::string& id) {
   // Loop through the students vector untill matching id is found
-  for (int i = 0; i < students.size(); i++) {
+  for (size_t i = 0; i < students.size(); i++) {
     if (students[i]->getId() == id) {
       students.erase(students.begin() + i);  // Remove student from the vector
       return true;
@@ -32,7 +32,7 @@ bool Database::removeStudent(const std::string& id) {
 
 const Student* Database::findStudentById(const std::string& id) const {
   // Loop through the students vector untill matching id is found
-  for (int i = 0; i < students.size(); i++) {
+  for (size_t i = 0; i < students.size(); i++) {
     if (students[i]->getId() == id) {
       return students[i].get();  // Return pointer to the student
     }
@@ -40,6 +40,31 @@ const Student* Database::findStudentById(const std::string& id) const {
   // If no matching student is found return null pointer
   return nullptr;
 }
+
+bool Database::updateStudentName(const std::string& id,
+                                 const std::string& newFirst,
+                                 const std::string& newLast) {
+  // Iterate through students vector untill matching ID is found
+  for (size_t i = 0; i < students.size(); i++) {
+    if (students[i]->getId() == id) {
+      students[i]->setFirstName(newFirst);  // Apply new first name
+      students[i]->setLastName(newLast);    // Apply new last name
+      return true;
+    }
+  }
+  return false;
+};
+
+bool Database::updateSemestersCompleted(const std::string& id, int newCount) {
+  // iterate through students vector untill matching ID is found
+  for (size_t i = 0; i < students.size(); i++) {
+    if (students[i]->getId() == id) {
+      students[i]->setSemestersCompleted(newCount);  // Apply new semester count
+      return true;
+    }
+  }
+  return false;
+};
 
 // ---------- Courses ----------
 bool Database::addCourse(const Course& course) {
@@ -52,9 +77,13 @@ bool Database::addCourse(const Course& course) {
 
 bool Database::removeCourse(const std::string& code) {
   // Loop through courses untill matching course code is found
-  for (int i = 0; i < courses.size(); i++) {
+  for (size_t i = 0; i < courses.size(); i++) {
     if (courses[i].getCode() == code) {
-      courses.erase(courses.begin() + i);
+      // Check if there are students enrolled in the course
+      if(numberOfStudentsEnrolled(code) > 0){
+        return false; // Cannot remove course as there are students enrolled in it
+      }
+      courses.erase(courses.begin() + i); // Remove course
       return true;
     }
   }
@@ -63,7 +92,7 @@ bool Database::removeCourse(const std::string& code) {
 
 const Course* Database::findCourseByCode(const std::string& code) const {
   // Loop through the courses vector untill matching id is found
-  for (int i = 0; i < courses.size(); i++) {
+  for (size_t i = 0; i < courses.size(); i++) {
     if (courses[i].getCode() == code) {
       return &courses[i];  // Return pointer to the course
     }
@@ -102,7 +131,7 @@ std::vector<Enrollment> Database::getEnrollmentsForStudent(
     const std::string& studentId) const {
   std::vector<Enrollment>
       result;  // Create a result vector to store student enrollment details
-  for (int i = 0; i < enrollments.size(); i++) {
+  for (size_t i = 0; i < enrollments.size(); i++) {
     if (enrollments[i].getStudentId() == studentId) {
       result.push_back(enrollments[i]);
     }
@@ -115,7 +144,7 @@ bool Database::dropStudentFromCourse(const std::string& studentId,
                                      const std::string& term) {
   // Iterate through enrollments vector untill enrollment with matching criteria
   // is found, then delete the enrollment
-  for (int i = 0; i < enrollments.size(); i++) {
+  for (size_t i = 0; i < enrollments.size(); i++) {
     if (enrollments[i].getStudentId() == studentId &&
         enrollments[i].getCourseCode() == courseCode &&
         enrollments[i].getYear() == year && enrollments[i].getTerm() == term) {
@@ -131,7 +160,7 @@ bool Database::updateGrade(const std::string& studentId,
                            const std::string& term, double newGrade) {
   // Iterate through enrollments vector untill enrollment with matching criteria
   // is found, then update grade
-  for (int i = 0; i < enrollments.size(); i++) {
+  for (size_t i = 0; i < enrollments.size(); i++) {
     if (enrollments[i].getStudentId() == studentId &&
         enrollments[i].getCourseCode() == courseCode &&
         enrollments[i].getYear() == year && enrollments[i].getTerm() == term) {
@@ -164,7 +193,7 @@ double Database::computeGpaForStudent(const std::string& studentId) const {
 // ---------- Helpers ----------
 bool Database::studentExists(const std::string& id) const {
   // Loop through the students vector untill matching id is found
-  for (int i = 0; i < students.size(); i++) {
+  for (size_t i = 0; i < students.size(); i++) {
     if (students[i]->getId() == id) {
       return true;  // Student already exists
     }
@@ -174,7 +203,7 @@ bool Database::studentExists(const std::string& id) const {
 
 bool Database::courseExists(const std::string& code) const {
   // Iterate through courses vector untill course with matching code is found
-  for (int i = 0; i < courses.size(); i++) {
+  for (size_t i = 0; i < courses.size(); i++) {
     if (courses[i].getCode() == code) {
       return true;  // Course already exists
     }
@@ -182,12 +211,23 @@ bool Database::courseExists(const std::string& code) const {
   return false;
 }
 
+const int Database::numberOfStudentsEnrolled(const std::string& code) const{
+  int number = 0;
+  // Iterate through enrollments untill one with the desired course code is found
+  for(size_t i = 0; i < enrollments.size(); i++){
+    if(enrollments[i].getCourseCode() == code){
+      number++; // Increment counter
+    }
+  }
+  return number;
+};
+
 bool Database::isStudentEnrolledIn(const std::string& studentId,
                                    const std::string& courseCode, int year,
                                    const std::string& term) const {
   // Iterate through enrollments untill enrollment with matching criteria is
   // found
-  for (int i = 0; i < enrollments.size(); i++) {
+  for (size_t i = 0; i < enrollments.size(); i++) {
     if (enrollments[i].getStudentId() == studentId &&
         enrollments[i].getCourseCode() == courseCode &&
         enrollments[i].getYear() == year && enrollments[i].getTerm() == term) {
@@ -205,7 +245,7 @@ std::vector<const Student*> Database::getStudentsInCourse(
   // Initialise a vector to store pointers to student objects
   std::vector<const Student*> studentsInCourse;
   // Iterate through enrollments untill course code, year, and term match
-  for (int i = 0; i < enrollments.size(); i++) {
+  for (size_t i = 0; i < enrollments.size(); i++) {
     if (enrollments[i].getCourseCode() == courseCode &&
         enrollments[i].getYear() == year && enrollments[i].getTerm() == term) {
       // Store ID of the enrolled student
@@ -228,7 +268,7 @@ double Database::getCourseAverage(const std::string& courseCode, int year,
   double aggregateGrade = 0;
   int recordedGrades = 0;
   // Iterate through enrollments untill course code, year, and term match
-  for (int i = 0; i < enrollments.size(); i++) {
+  for (size_t i = 0; i < enrollments.size(); i++) {
     if (enrollments[i].getCourseCode() == courseCode &&
         enrollments[i].getYear() == year && enrollments[i].getTerm() == term) {
       aggregateGrade +=
