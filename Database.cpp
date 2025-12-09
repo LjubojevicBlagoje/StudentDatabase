@@ -80,10 +80,11 @@ bool Database::removeCourse(const std::string& code) {
   for (size_t i = 0; i < courses.size(); i++) {
     if (courses[i].getCode() == code) {
       // Check if there are students enrolled in the course
-      if(numberOfStudentsEnrolled(code) > 0){
-        return false; // Cannot remove course as there are students enrolled in it
+      if (numberOfStudentsEnrolled(code) > 0) {
+        return false;  // Cannot remove course as there are students enrolled in
+                       // it
       }
-      courses.erase(courses.begin() + i); // Remove course
+      courses.erase(courses.begin() + i);  // Remove course
       return true;
     }
   }
@@ -211,12 +212,13 @@ bool Database::courseExists(const std::string& code) const {
   return false;
 }
 
-const int Database::numberOfStudentsEnrolled(const std::string& code) const{
+int Database::numberOfStudentsEnrolled(const std::string& code) const {
   int number = 0;
-  // Iterate through enrollments untill one with the desired course code is found
-  for(size_t i = 0; i < enrollments.size(); i++){
-    if(enrollments[i].getCourseCode() == code){
-      number++; // Increment counter
+  // Iterate through enrollments untill one with the desired course code is
+  // found
+  for (size_t i = 0; i < enrollments.size(); i++) {
+    if (enrollments[i].getCourseCode() == code) {
+      number++;  // Increment counter
     }
   }
   return number;

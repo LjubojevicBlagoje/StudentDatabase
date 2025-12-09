@@ -52,7 +52,7 @@ class Database {
   // Helpers
   bool studentExists(const std::string& id) const;
   bool courseExists(const std::string& code) const;
-  const int numberOfStudentsEnrolled(const std::string& code) const; // returns number of students enrolled in a course
+  int numberOfStudentsEnrolled(const std::string& code) const; // returns number of students enrolled in a course
   bool isStudentEnrolledIn(const std::string& studentId,
                            const std::string& courseCode, int year,
                            const std::string& term) const;

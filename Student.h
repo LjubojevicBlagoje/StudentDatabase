@@ -2,7 +2,6 @@
 #define STUDENT_H
 
 #include <string>
-#include <vector>
 
 class Student {
  private:
