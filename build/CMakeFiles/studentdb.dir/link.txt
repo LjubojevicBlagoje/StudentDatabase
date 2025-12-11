@@ -1,0 +1,2 @@
+/usr/bin/ar qc libstudentdb.a CMakeFiles/studentdb.dir/Course.cpp.o CMakeFiles/studentdb.dir/Database.cpp.o CMakeFiles/studentdb.dir/Enrollment.cpp.o CMakeFiles/studentdb.dir/Student.cpp.o
+/usr/bin/ranlib libstudentdb.a

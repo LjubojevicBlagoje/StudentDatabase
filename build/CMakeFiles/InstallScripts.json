@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/cmake_install.cmake",
+		"/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/tests/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
