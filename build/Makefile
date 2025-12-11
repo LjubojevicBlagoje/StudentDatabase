@@ -143,17 +143,17 @@ student_app/fast:
 .PHONY : student_app/fast
 
 #=============================================================================
-# Target rules for targets named student_tests
+# Target rules for targets named db_tests
 
 # Build rule for target.
-student_tests: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 student_tests
-.PHONY : student_tests
+db_tests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 db_tests
+.PHONY : db_tests
 
 # fast build rule for target.
-student_tests/fast:
-	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/student_tests.dir/build.make tests/CMakeFiles/student_tests.dir/build
-.PHONY : student_tests/fast
+db_tests/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/db_tests.dir/build.make tests/CMakeFiles/db_tests.dir/build
+.PHONY : db_tests/fast
 
 Course.o: Course.cpp.o
 .PHONY : Course.o
@@ -283,8 +283,8 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... db_tests"
 	@echo "... student_app"
-	@echo "... student_tests"
 	@echo "... studentdb"
 	@echo "... Course.o"
 	@echo "... Course.i"

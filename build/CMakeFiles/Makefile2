@@ -88,11 +88,11 @@ clean: tests/clean
 # Directory level rules for directory tests
 
 # Recursive "all" directory target.
-tests/all: tests/CMakeFiles/student_tests.dir/all
+tests/all: tests/CMakeFiles/db_tests.dir/all
 .PHONY : tests/all
 
 # Recursive "codegen" directory target.
-tests/codegen: tests/CMakeFiles/student_tests.dir/codegen
+tests/codegen: tests/CMakeFiles/db_tests.dir/codegen
 .PHONY : tests/codegen
 
 # Recursive "preinstall" directory target.
@@ -100,7 +100,7 @@ tests/preinstall:
 .PHONY : tests/preinstall
 
 # Recursive "clean" directory target.
-tests/clean: tests/CMakeFiles/student_tests.dir/clean
+tests/clean: tests/CMakeFiles/db_tests.dir/clean
 .PHONY : tests/clean
 
 #=============================================================================
@@ -142,7 +142,7 @@ CMakeFiles/studentdb.dir/clean:
 CMakeFiles/student_app.dir/all: CMakeFiles/studentdb.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/student_app.dir/build.make CMakeFiles/student_app.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/student_app.dir/build.make CMakeFiles/student_app.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles --progress-num=1,2 "Built target student_app"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles --progress-num=6,7 "Built target student_app"
 .PHONY : CMakeFiles/student_app.dir/all
 
 # Build rule for subdir invocation for target.
@@ -159,7 +159,7 @@ student_app: CMakeFiles/student_app.dir/rule
 # codegen rule for target.
 CMakeFiles/student_app.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/student_app.dir/build.make CMakeFiles/student_app.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles --progress-num=1,2 "Finished codegen for target student_app"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles --progress-num=6,7 "Finished codegen for target student_app"
 .PHONY : CMakeFiles/student_app.dir/codegen
 
 # clean rule for target.
@@ -168,36 +168,36 @@ CMakeFiles/student_app.dir/clean:
 .PHONY : CMakeFiles/student_app.dir/clean
 
 #=============================================================================
-# Target rules for target tests/CMakeFiles/student_tests.dir
+# Target rules for target tests/CMakeFiles/db_tests.dir
 
 # All Build rule for target.
-tests/CMakeFiles/student_tests.dir/all: CMakeFiles/studentdb.dir/all
-	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/student_tests.dir/build.make tests/CMakeFiles/student_tests.dir/depend
-	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/student_tests.dir/build.make tests/CMakeFiles/student_tests.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles --progress-num=3,4,5,6,7 "Built target student_tests"
-.PHONY : tests/CMakeFiles/student_tests.dir/all
+tests/CMakeFiles/db_tests.dir/all: CMakeFiles/studentdb.dir/all
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/db_tests.dir/build.make tests/CMakeFiles/db_tests.dir/depend
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/db_tests.dir/build.make tests/CMakeFiles/db_tests.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target db_tests"
+.PHONY : tests/CMakeFiles/db_tests.dir/all
 
 # Build rule for subdir invocation for target.
-tests/CMakeFiles/student_tests.dir/rule: cmake_check_build_system
+tests/CMakeFiles/db_tests.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles 10
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/CMakeFiles/student_tests.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/CMakeFiles/db_tests.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles 0
-.PHONY : tests/CMakeFiles/student_tests.dir/rule
+.PHONY : tests/CMakeFiles/db_tests.dir/rule
 
 # Convenience name for target.
-student_tests: tests/CMakeFiles/student_tests.dir/rule
-.PHONY : student_tests
+db_tests: tests/CMakeFiles/db_tests.dir/rule
+.PHONY : db_tests
 
 # codegen rule for target.
-tests/CMakeFiles/student_tests.dir/codegen:
-	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/student_tests.dir/build.make tests/CMakeFiles/student_tests.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles --progress-num=3,4,5,6,7 "Finished codegen for target student_tests"
-.PHONY : tests/CMakeFiles/student_tests.dir/codegen
+tests/CMakeFiles/db_tests.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/db_tests.dir/build.make tests/CMakeFiles/db_tests.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles --progress-num=1,2,3,4,5 "Finished codegen for target db_tests"
+.PHONY : tests/CMakeFiles/db_tests.dir/codegen
 
 # clean rule for target.
-tests/CMakeFiles/student_tests.dir/clean:
-	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/student_tests.dir/build.make tests/CMakeFiles/student_tests.dir/clean
-.PHONY : tests/CMakeFiles/student_tests.dir/clean
+tests/CMakeFiles/db_tests.dir/clean:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/db_tests.dir/build.make tests/CMakeFiles/db_tests.dir/clean
+.PHONY : tests/CMakeFiles/db_tests.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

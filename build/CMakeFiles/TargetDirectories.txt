@@ -2,6 +2,6 @@
 /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles/student_app.dir
 /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles/edit_cache.dir
 /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles/rebuild_cache.dir
-/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/tests/CMakeFiles/student_tests.dir
+/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/tests/CMakeFiles/db_tests.dir
 /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/tests/CMakeFiles/edit_cache.dir
 /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/tests/CMakeFiles/rebuild_cache.dir

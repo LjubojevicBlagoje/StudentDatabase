@@ -117,25 +117,25 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-tests/CMakeFiles/student_tests.dir/rule:
-	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/CMakeFiles/student_tests.dir/rule
-.PHONY : tests/CMakeFiles/student_tests.dir/rule
+tests/CMakeFiles/db_tests.dir/rule:
+	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/CMakeFiles/db_tests.dir/rule
+.PHONY : tests/CMakeFiles/db_tests.dir/rule
 
 # Convenience name for target.
-student_tests: tests/CMakeFiles/student_tests.dir/rule
-.PHONY : student_tests
+db_tests: tests/CMakeFiles/db_tests.dir/rule
+.PHONY : db_tests
 
 # fast build rule for target.
-student_tests/fast:
-	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/student_tests.dir/build.make tests/CMakeFiles/student_tests.dir/build
-.PHONY : student_tests/fast
+db_tests/fast:
+	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/db_tests.dir/build.make tests/CMakeFiles/db_tests.dir/build
+.PHONY : db_tests/fast
 
 __/external/catch_amalgamated.o: __/external/catch_amalgamated.cpp.o
 .PHONY : __/external/catch_amalgamated.o
 
 # target to build an object file
 __/external/catch_amalgamated.cpp.o:
-	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/student_tests.dir/build.make tests/CMakeFiles/student_tests.dir/__/external/catch_amalgamated.cpp.o
+	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/db_tests.dir/build.make tests/CMakeFiles/db_tests.dir/__/external/catch_amalgamated.cpp.o
 .PHONY : __/external/catch_amalgamated.cpp.o
 
 __/external/catch_amalgamated.i: __/external/catch_amalgamated.cpp.i
@@ -143,7 +143,7 @@ __/external/catch_amalgamated.i: __/external/catch_amalgamated.cpp.i
 
 # target to preprocess a source file
 __/external/catch_amalgamated.cpp.i:
-	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/student_tests.dir/build.make tests/CMakeFiles/student_tests.dir/__/external/catch_amalgamated.cpp.i
+	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/db_tests.dir/build.make tests/CMakeFiles/db_tests.dir/__/external/catch_amalgamated.cpp.i
 .PHONY : __/external/catch_amalgamated.cpp.i
 
 __/external/catch_amalgamated.s: __/external/catch_amalgamated.cpp.s
@@ -151,7 +151,7 @@ __/external/catch_amalgamated.s: __/external/catch_amalgamated.cpp.s
 
 # target to generate assembly for a file
 __/external/catch_amalgamated.cpp.s:
-	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/student_tests.dir/build.make tests/CMakeFiles/student_tests.dir/__/external/catch_amalgamated.cpp.s
+	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/db_tests.dir/build.make tests/CMakeFiles/db_tests.dir/__/external/catch_amalgamated.cpp.s
 .PHONY : __/external/catch_amalgamated.cpp.s
 
 test_database.o: test_database.cpp.o
@@ -159,7 +159,7 @@ test_database.o: test_database.cpp.o
 
 # target to build an object file
 test_database.cpp.o:
-	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/student_tests.dir/build.make tests/CMakeFiles/student_tests.dir/test_database.cpp.o
+	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/db_tests.dir/build.make tests/CMakeFiles/db_tests.dir/test_database.cpp.o
 .PHONY : test_database.cpp.o
 
 test_database.i: test_database.cpp.i
@@ -167,7 +167,7 @@ test_database.i: test_database.cpp.i
 
 # target to preprocess a source file
 test_database.cpp.i:
-	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/student_tests.dir/build.make tests/CMakeFiles/student_tests.dir/test_database.cpp.i
+	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/db_tests.dir/build.make tests/CMakeFiles/db_tests.dir/test_database.cpp.i
 .PHONY : test_database.cpp.i
 
 test_database.s: test_database.cpp.s
@@ -175,7 +175,7 @@ test_database.s: test_database.cpp.s
 
 # target to generate assembly for a file
 test_database.cpp.s:
-	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/student_tests.dir/build.make tests/CMakeFiles/student_tests.dir/test_database.cpp.s
+	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/db_tests.dir/build.make tests/CMakeFiles/db_tests.dir/test_database.cpp.s
 .PHONY : test_database.cpp.s
 
 test_main.o: test_main.cpp.o
@@ -183,7 +183,7 @@ test_main.o: test_main.cpp.o
 
 # target to build an object file
 test_main.cpp.o:
-	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/student_tests.dir/build.make tests/CMakeFiles/student_tests.dir/test_main.cpp.o
+	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/db_tests.dir/build.make tests/CMakeFiles/db_tests.dir/test_main.cpp.o
 .PHONY : test_main.cpp.o
 
 test_main.i: test_main.cpp.i
@@ -191,7 +191,7 @@ test_main.i: test_main.cpp.i
 
 # target to preprocess a source file
 test_main.cpp.i:
-	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/student_tests.dir/build.make tests/CMakeFiles/student_tests.dir/test_main.cpp.i
+	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/db_tests.dir/build.make tests/CMakeFiles/db_tests.dir/test_main.cpp.i
 .PHONY : test_main.cpp.i
 
 test_main.s: test_main.cpp.s
@@ -199,7 +199,7 @@ test_main.s: test_main.cpp.s
 
 # target to generate assembly for a file
 test_main.cpp.s:
-	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/student_tests.dir/build.make tests/CMakeFiles/student_tests.dir/test_main.cpp.s
+	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/db_tests.dir/build.make tests/CMakeFiles/db_tests.dir/test_main.cpp.s
 .PHONY : test_main.cpp.s
 
 test_student.o: test_student.cpp.o
@@ -207,7 +207,7 @@ test_student.o: test_student.cpp.o
 
 # target to build an object file
 test_student.cpp.o:
-	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/student_tests.dir/build.make tests/CMakeFiles/student_tests.dir/test_student.cpp.o
+	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/db_tests.dir/build.make tests/CMakeFiles/db_tests.dir/test_student.cpp.o
 .PHONY : test_student.cpp.o
 
 test_student.i: test_student.cpp.i
@@ -215,7 +215,7 @@ test_student.i: test_student.cpp.i
 
 # target to preprocess a source file
 test_student.cpp.i:
-	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/student_tests.dir/build.make tests/CMakeFiles/student_tests.dir/test_student.cpp.i
+	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/db_tests.dir/build.make tests/CMakeFiles/db_tests.dir/test_student.cpp.i
 .PHONY : test_student.cpp.i
 
 test_student.s: test_student.cpp.s
@@ -223,7 +223,7 @@ test_student.s: test_student.cpp.s
 
 # target to generate assembly for a file
 test_student.cpp.s:
-	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/student_tests.dir/build.make tests/CMakeFiles/student_tests.dir/test_student.cpp.s
+	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/db_tests.dir/build.make tests/CMakeFiles/db_tests.dir/test_student.cpp.s
 .PHONY : test_student.cpp.s
 
 # Help Target
@@ -234,7 +234,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... student_tests"
+	@echo "... db_tests"
 	@echo "... __/external/catch_amalgamated.o"
 	@echo "... __/external/catch_amalgamated.i"
 	@echo "... __/external/catch_amalgamated.s"
