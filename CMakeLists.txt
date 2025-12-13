@@ -15,8 +15,8 @@ add_library(studentdb
 )
 
 # Main executable
-add_executable(student_app main.cpp)
-target_link_libraries(student_app studentdb)
+add_executable(student_cli CLImain.cpp)
+target_link_libraries(student_cli studentdb)
 
 # Add test subdirectory
 add_subdirectory(tests)
