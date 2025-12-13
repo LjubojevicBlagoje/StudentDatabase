@@ -64,13 +64,13 @@ CMAKE_BINARY_DIR = /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/b
 
 # The main recursive "all" target.
 all: CMakeFiles/studentdb.dir/all
-all: CMakeFiles/student_app.dir/all
+all: CMakeFiles/student_cli.dir/all
 all: tests/all
 .PHONY : all
 
 # The main recursive "codegen" target.
 codegen: CMakeFiles/studentdb.dir/codegen
-codegen: CMakeFiles/student_app.dir/codegen
+codegen: CMakeFiles/student_cli.dir/codegen
 codegen: tests/codegen
 .PHONY : codegen
 
@@ -80,7 +80,7 @@ preinstall: tests/preinstall
 
 # The main recursive "clean" target.
 clean: CMakeFiles/studentdb.dir/clean
-clean: CMakeFiles/student_app.dir/clean
+clean: CMakeFiles/student_cli.dir/clean
 clean: tests/clean
 .PHONY : clean
 
@@ -136,36 +136,36 @@ CMakeFiles/studentdb.dir/clean:
 .PHONY : CMakeFiles/studentdb.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/student_app.dir
+# Target rules for target CMakeFiles/student_cli.dir
 
 # All Build rule for target.
-CMakeFiles/student_app.dir/all: CMakeFiles/studentdb.dir/all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/student_app.dir/build.make CMakeFiles/student_app.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/student_app.dir/build.make CMakeFiles/student_app.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles --progress-num=6,7 "Built target student_app"
-.PHONY : CMakeFiles/student_app.dir/all
+CMakeFiles/student_cli.dir/all: CMakeFiles/studentdb.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/student_cli.dir/build.make CMakeFiles/student_cli.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/student_cli.dir/build.make CMakeFiles/student_cli.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles --progress-num=6,7 "Built target student_cli"
+.PHONY : CMakeFiles/student_cli.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/student_app.dir/rule: cmake_check_build_system
+CMakeFiles/student_cli.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles 7
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/student_app.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/student_cli.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles 0
-.PHONY : CMakeFiles/student_app.dir/rule
+.PHONY : CMakeFiles/student_cli.dir/rule
 
 # Convenience name for target.
-student_app: CMakeFiles/student_app.dir/rule
-.PHONY : student_app
+student_cli: CMakeFiles/student_cli.dir/rule
+.PHONY : student_cli
 
 # codegen rule for target.
-CMakeFiles/student_app.dir/codegen:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/student_app.dir/build.make CMakeFiles/student_app.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles --progress-num=6,7 "Finished codegen for target student_app"
-.PHONY : CMakeFiles/student_app.dir/codegen
+CMakeFiles/student_cli.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/student_cli.dir/build.make CMakeFiles/student_cli.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles --progress-num=6,7 "Finished codegen for target student_cli"
+.PHONY : CMakeFiles/student_cli.dir/codegen
 
 # clean rule for target.
-CMakeFiles/student_app.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/student_app.dir/build.make CMakeFiles/student_app.dir/clean
-.PHONY : CMakeFiles/student_app.dir/clean
+CMakeFiles/student_cli.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/student_cli.dir/build.make CMakeFiles/student_cli.dir/clean
+.PHONY : CMakeFiles/student_cli.dir/clean
 
 #=============================================================================
 # Target rules for target tests/CMakeFiles/db_tests.dir

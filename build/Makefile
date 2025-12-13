@@ -130,17 +130,17 @@ studentdb/fast:
 .PHONY : studentdb/fast
 
 #=============================================================================
-# Target rules for targets named student_app
+# Target rules for targets named student_cli
 
 # Build rule for target.
-student_app: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 student_app
-.PHONY : student_app
+student_cli: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 student_cli
+.PHONY : student_cli
 
 # fast build rule for target.
-student_app/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/student_app.dir/build.make CMakeFiles/student_app.dir/build
-.PHONY : student_app/fast
+student_cli/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/student_cli.dir/build.make CMakeFiles/student_cli.dir/build
+.PHONY : student_cli/fast
 
 #=============================================================================
 # Target rules for targets named db_tests
@@ -155,29 +155,29 @@ db_tests/fast:
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/db_tests.dir/build.make tests/CMakeFiles/db_tests.dir/build
 .PHONY : db_tests/fast
 
-CLI_main.o: CLI_main.cpp.o
-.PHONY : CLI_main.o
+CLImain.o: CLImain.cpp.o
+.PHONY : CLImain.o
 
 # target to build an object file
-CLI_main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/student_app.dir/build.make CMakeFiles/student_app.dir/CLI_main.cpp.o
-.PHONY : CLI_main.cpp.o
+CLImain.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/student_cli.dir/build.make CMakeFiles/student_cli.dir/CLImain.cpp.o
+.PHONY : CLImain.cpp.o
 
-CLI_main.i: CLI_main.cpp.i
-.PHONY : CLI_main.i
+CLImain.i: CLImain.cpp.i
+.PHONY : CLImain.i
 
 # target to preprocess a source file
-CLI_main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/student_app.dir/build.make CMakeFiles/student_app.dir/CLI_main.cpp.i
-.PHONY : CLI_main.cpp.i
+CLImain.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/student_cli.dir/build.make CMakeFiles/student_cli.dir/CLImain.cpp.i
+.PHONY : CLImain.cpp.i
 
-CLI_main.s: CLI_main.cpp.s
-.PHONY : CLI_main.s
+CLImain.s: CLImain.cpp.s
+.PHONY : CLImain.s
 
 # target to generate assembly for a file
-CLI_main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/student_app.dir/build.make CMakeFiles/student_app.dir/CLI_main.cpp.s
-.PHONY : CLI_main.cpp.s
+CLImain.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/student_cli.dir/build.make CMakeFiles/student_cli.dir/CLImain.cpp.s
+.PHONY : CLImain.cpp.s
 
 Course.o: Course.cpp.o
 .PHONY : Course.o
@@ -284,11 +284,11 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... db_tests"
-	@echo "... student_app"
+	@echo "... student_cli"
 	@echo "... studentdb"
-	@echo "... CLI_main.o"
-	@echo "... CLI_main.i"
-	@echo "... CLI_main.s"
+	@echo "... CLImain.o"
+	@echo "... CLImain.i"
+	@echo "... CLImain.s"
 	@echo "... Course.o"
 	@echo "... Course.i"
 	@echo "... Course.s"

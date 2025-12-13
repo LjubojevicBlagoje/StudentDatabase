@@ -51,6 +51,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/studentdb.dir/DependInfo.cmake"
-  "CMakeFiles/student_app.dir/DependInfo.cmake"
+  "CMakeFiles/student_cli.dir/DependInfo.cmake"
   "tests/CMakeFiles/db_tests.dir/DependInfo.cmake"
   )
