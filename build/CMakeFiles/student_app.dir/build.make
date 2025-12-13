@@ -72,28 +72,28 @@ include CMakeFiles/student_app.dir/flags.make
 CMakeFiles/student_app.dir/codegen:
 .PHONY : CMakeFiles/student_app.dir/codegen
 
-CMakeFiles/student_app.dir/main.cpp.o: CMakeFiles/student_app.dir/flags.make
-CMakeFiles/student_app.dir/main.cpp.o: /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/main.cpp
-CMakeFiles/student_app.dir/main.cpp.o: CMakeFiles/student_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/student_app.dir/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/student_app.dir/main.cpp.o -MF CMakeFiles/student_app.dir/main.cpp.o.d -o CMakeFiles/student_app.dir/main.cpp.o -c /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/main.cpp
+CMakeFiles/student_app.dir/CLI_main.cpp.o: CMakeFiles/student_app.dir/flags.make
+CMakeFiles/student_app.dir/CLI_main.cpp.o: /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/CLI_main.cpp
+CMakeFiles/student_app.dir/CLI_main.cpp.o: CMakeFiles/student_app.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/student_app.dir/CLI_main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/student_app.dir/CLI_main.cpp.o -MF CMakeFiles/student_app.dir/CLI_main.cpp.o.d -o CMakeFiles/student_app.dir/CLI_main.cpp.o -c /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/CLI_main.cpp
 
-CMakeFiles/student_app.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/student_app.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/main.cpp > CMakeFiles/student_app.dir/main.cpp.i
+CMakeFiles/student_app.dir/CLI_main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/student_app.dir/CLI_main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/CLI_main.cpp > CMakeFiles/student_app.dir/CLI_main.cpp.i
 
-CMakeFiles/student_app.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/student_app.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/main.cpp -o CMakeFiles/student_app.dir/main.cpp.s
+CMakeFiles/student_app.dir/CLI_main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/student_app.dir/CLI_main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/CLI_main.cpp -o CMakeFiles/student_app.dir/CLI_main.cpp.s
 
 # Object files for target student_app
 student_app_OBJECTS = \
-"CMakeFiles/student_app.dir/main.cpp.o"
+"CMakeFiles/student_app.dir/CLI_main.cpp.o"
 
 # External object files for target student_app
 student_app_EXTERNAL_OBJECTS =
 
-student_app: CMakeFiles/student_app.dir/main.cpp.o
+student_app: CMakeFiles/student_app.dir/CLI_main.cpp.o
 student_app: CMakeFiles/student_app.dir/build.make
 student_app: libstudentdb.a
 student_app: CMakeFiles/student_app.dir/link.txt

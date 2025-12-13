@@ -1,1 +1,1 @@
-/usr/bin/c++  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/student_app.dir/main.cpp.o -o student_app  libstudentdb.a
+/usr/bin/c++  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/student_app.dir/CLI_main.cpp.o -o student_app  libstudentdb.a

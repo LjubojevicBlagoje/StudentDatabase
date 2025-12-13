@@ -155,6 +155,30 @@ db_tests/fast:
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/db_tests.dir/build.make tests/CMakeFiles/db_tests.dir/build
 .PHONY : db_tests/fast
 
+CLI_main.o: CLI_main.cpp.o
+.PHONY : CLI_main.o
+
+# target to build an object file
+CLI_main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/student_app.dir/build.make CMakeFiles/student_app.dir/CLI_main.cpp.o
+.PHONY : CLI_main.cpp.o
+
+CLI_main.i: CLI_main.cpp.i
+.PHONY : CLI_main.i
+
+# target to preprocess a source file
+CLI_main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/student_app.dir/build.make CMakeFiles/student_app.dir/CLI_main.cpp.i
+.PHONY : CLI_main.cpp.i
+
+CLI_main.s: CLI_main.cpp.s
+.PHONY : CLI_main.s
+
+# target to generate assembly for a file
+CLI_main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/student_app.dir/build.make CMakeFiles/student_app.dir/CLI_main.cpp.s
+.PHONY : CLI_main.cpp.s
+
 Course.o: Course.cpp.o
 .PHONY : Course.o
 
@@ -251,30 +275,6 @@ Student.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/studentdb.dir/build.make CMakeFiles/studentdb.dir/Student.cpp.s
 .PHONY : Student.cpp.s
 
-main.o: main.cpp.o
-.PHONY : main.o
-
-# target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/student_app.dir/build.make CMakeFiles/student_app.dir/main.cpp.o
-.PHONY : main.cpp.o
-
-main.i: main.cpp.i
-.PHONY : main.i
-
-# target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/student_app.dir/build.make CMakeFiles/student_app.dir/main.cpp.i
-.PHONY : main.cpp.i
-
-main.s: main.cpp.s
-.PHONY : main.s
-
-# target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/student_app.dir/build.make CMakeFiles/student_app.dir/main.cpp.s
-.PHONY : main.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -286,6 +286,9 @@ help:
 	@echo "... db_tests"
 	@echo "... student_app"
 	@echo "... studentdb"
+	@echo "... CLI_main.o"
+	@echo "... CLI_main.i"
+	@echo "... CLI_main.s"
 	@echo "... Course.o"
 	@echo "... Course.i"
 	@echo "... Course.s"
@@ -298,9 +301,6 @@ help:
 	@echo "... Student.o"
 	@echo "... Student.i"
 	@echo "... Student.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
 .PHONY : help
 
 
