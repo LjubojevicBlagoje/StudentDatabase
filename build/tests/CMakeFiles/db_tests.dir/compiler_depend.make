@@ -1711,9 +1711,11 @@ tests/CMakeFiles/db_tests.dir/test_database.cpp.o: /Users/blagojeljubojevic/Down
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stdarg.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stdint.h \
+  /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/external/sqlite3.h \
   /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/Course.h \
   /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/Database.h \
   /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/Enrollment.h \
+  /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/SqliteDB.h \
   /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/Student.h \
   /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/external/catch_amalgamated.hpp
 
@@ -3331,6 +3333,8 @@ tests/CMakeFiles/db_tests.dir/test_student.cpp.o: /Users/blagojeljubojevic/Downl
 
 /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/tests/test_main.cpp:
 
+/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/SqliteDB.h:
+
 /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/Database.h:
 
 /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/Course.h:
@@ -3952,6 +3956,8 @@ tests/CMakeFiles/db_tests.dir/test_student.cpp.o: /Users/blagojeljubojevic/Downl
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_convertible.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/add_cv_quals.h:
+
+/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/external/sqlite3.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/binary_negate.h:
 

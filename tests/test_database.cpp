@@ -7,7 +7,7 @@
 #include <memory>
 
 TEST_CASE("GPA is computed correctly for a student", "[database][gpa]") {
-    Database db;
+    Database db(":memory:");
 
     db.addStudent(std::make_unique<Student>("S1", "Alice", "Anderson", 4));
     db.addCourse(Course("COMP1101", "Intro to Programming", 3));
@@ -21,7 +21,7 @@ TEST_CASE("GPA is computed correctly for a student", "[database][gpa]") {
 }
 
 TEST_CASE("Cannot enroll if student or course does not exist", "[database][enroll]") {
-    Database db;
+    Database db(":memory:");
 
     db.addStudent(std::make_unique<Student>("S1", "Alice", "Anderson", 4));
     db.addCourse(Course("COMP1101", "Intro to Programming", 3));

@@ -1,9 +1,120 @@
 #include "Database.h"
 
+#include <sqlite3.h>
+
 #include <iostream>
 #include <vector>
 
-Database::Database() {};
+Database::Database(const std::string& dbPath) : db(dbPath) {
+  initSchema();
+  loadFromDb();
+}
+
+void Database::initSchema() {
+  db.exec(R"SQL(
+        CREATE TABLE IF NOT EXISTS students (
+            id TEXT PRIMARY KEY,
+            first_name TEXT NOT NULL,
+            last_name  TEXT NOT NULL,
+            semesters_completed INTEGER NOT NULL
+        );
+
+        CREATE TABLE IF NOT EXISTS courses (
+            code TEXT PRIMARY KEY,
+            name TEXT NOT NULL,
+            units INTEGER NOT NULL
+        );
+
+        CREATE TABLE IF NOT EXISTS enrollments (
+            student_id TEXT NOT NULL,
+            course_code TEXT NOT NULL,
+            year INTEGER NOT NULL,
+            term TEXT NOT NULL,
+            grade REAL NOT NULL,
+
+            PRIMARY KEY (student_id, course_code, year, term),
+            FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE,
+            FOREIGN KEY (course_code) REFERENCES courses(code) ON DELETE RESTRICT
+        );
+
+        CREATE INDEX IF NOT EXISTS idx_enrollments_student
+            ON enrollments(student_id);
+
+        CREATE INDEX IF NOT EXISTS idx_enrollments_course_offering
+            ON enrollments(course_code, year, term);
+    )SQL");
+}
+
+void Database::loadFromDb() {
+  // Clear current in-memory data
+  students.clear();
+  courses.clear();
+  enrollments.clear();
+
+  // ---- Load students ----
+  {
+    const char* sql =
+        "SELECT id, first_name, last_name, semesters_completed FROM students;";
+    sqlite3_stmt* stmt = nullptr;
+    if (sqlite3_prepare_v2(db.raw(), sql, -1, &stmt, nullptr) != SQLITE_OK)
+      throw std::runtime_error("prepare failed (students)");
+
+    while (sqlite3_step(stmt) == SQLITE_ROW) {
+      std::string id =
+          reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0));
+      std::string first =
+          reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
+      std::string last =
+          reinterpret_cast<const char*>(sqlite3_column_text(stmt, 2));
+      int sem = sqlite3_column_int(stmt, 3);
+
+      students.push_back(std::make_unique<Student>(id, first, last, sem));
+    }
+    sqlite3_finalize(stmt);
+  }
+
+  // ---- Load courses ----
+  {
+    const char* sql = "SELECT code, name, units FROM courses;";
+    sqlite3_stmt* stmt = nullptr;
+    if (sqlite3_prepare_v2(db.raw(), sql, -1, &stmt, nullptr) != SQLITE_OK)
+      throw std::runtime_error("prepare failed (courses)");
+
+    while (sqlite3_step(stmt) == SQLITE_ROW) {
+      std::string code =
+          reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0));
+      std::string name =
+          reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
+      int units = sqlite3_column_int(stmt, 2);
+
+      courses.emplace_back(code, name, units);
+    }
+    sqlite3_finalize(stmt);
+  }
+
+  // ---- Load enrollments ----
+  {
+    const char* sql =
+        "SELECT student_id, course_code, year, term, grade FROM enrollments;";
+    sqlite3_stmt* stmt = nullptr;
+    if (sqlite3_prepare_v2(db.raw(), sql, -1, &stmt, nullptr) != SQLITE_OK)
+      throw std::runtime_error("prepare failed (enrollments)");
+
+    while (sqlite3_step(stmt) == SQLITE_ROW) {
+      std::string sid =
+          reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0));
+      std::string code =
+          reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
+      int year = sqlite3_column_int(stmt, 2);
+      std::string term =
+          reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3));
+      double grade = sqlite3_column_double(stmt, 4);
+
+      enrollments.emplace_back(sid, code, year, term, grade);
+    }
+    sqlite3_finalize(stmt);
+  }
+}
 
 // ---------- Students ----------
 
@@ -14,6 +125,25 @@ bool Database::addStudent(std::unique_ptr<Student> student) {
     // If student already exists exit here (do not add)
     return false;
   }
+
+  const char* sql =
+      "INSERT INTO students(id, first_name, last_name, semesters_completed) "
+      "VALUES(?, ?, ?, ?);";
+
+  sqlite3_stmt* stmt = nullptr;
+  if (sqlite3_prepare_v2(db.raw(), sql, -1, &stmt, nullptr) != SQLITE_OK)
+    throw std::runtime_error("prepare failed (insert student)");
+
+  sqlite3_bind_text(stmt, 1, s->getId().c_str(), -1, SQLITE_TRANSIENT);
+  sqlite3_bind_text(stmt, 2, s->getFirstName().c_str(), -1, SQLITE_TRANSIENT);
+  sqlite3_bind_text(stmt, 3, s->getLastName().c_str(), -1, SQLITE_TRANSIENT);
+  sqlite3_bind_int(stmt, 4, s->getSemestersCompleted());
+
+  int rc = sqlite3_step(stmt);
+  sqlite3_finalize(stmt);
+
+  if (rc != SQLITE_DONE) return false;
+
   students.push_back(
       std::move(student));  // add student to vector (transfer ownership)
   return true;

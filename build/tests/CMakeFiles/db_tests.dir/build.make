@@ -144,6 +144,7 @@ tests/db_tests: tests/CMakeFiles/db_tests.dir/test_student.cpp.o
 tests/db_tests: tests/CMakeFiles/db_tests.dir/__/external/catch_amalgamated.cpp.o
 tests/db_tests: tests/CMakeFiles/db_tests.dir/build.make
 tests/db_tests: libstudentdb.a
+tests/db_tests: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/libsqlite3.tbd
 tests/db_tests: tests/CMakeFiles/db_tests.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable db_tests"
 	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/db_tests.dir/link.txt --verbose=$(VERBOSE)

@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/studentdb.dir/Database.cpp.o.d"
   "CMakeFiles/studentdb.dir/Enrollment.cpp.o"
   "CMakeFiles/studentdb.dir/Enrollment.cpp.o.d"
+  "CMakeFiles/studentdb.dir/SqliteDB.cpp.o"
+  "CMakeFiles/studentdb.dir/SqliteDB.cpp.o.d"
   "CMakeFiles/studentdb.dir/Student.cpp.o"
   "CMakeFiles/studentdb.dir/Student.cpp.o.d"
   "libstudentdb.a"

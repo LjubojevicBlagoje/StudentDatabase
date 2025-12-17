@@ -110,12 +110,12 @@ tests/clean: tests/CMakeFiles/db_tests.dir/clean
 CMakeFiles/studentdb.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/studentdb.dir/build.make CMakeFiles/studentdb.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/studentdb.dir/build.make CMakeFiles/studentdb.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles --progress-num=8,9,10,11,12 "Built target studentdb"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles --progress-num=8,9,10,11,12,13 "Built target studentdb"
 .PHONY : CMakeFiles/studentdb.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/studentdb.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/studentdb.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles 0
 .PHONY : CMakeFiles/studentdb.dir/rule
@@ -127,7 +127,7 @@ studentdb: CMakeFiles/studentdb.dir/rule
 # codegen rule for target.
 CMakeFiles/studentdb.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/studentdb.dir/build.make CMakeFiles/studentdb.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles --progress-num=8,9,10,11,12 "Finished codegen for target studentdb"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles --progress-num=8,9,10,11,12,13 "Finished codegen for target studentdb"
 .PHONY : CMakeFiles/studentdb.dir/codegen
 
 # clean rule for target.
@@ -147,7 +147,7 @@ CMakeFiles/student_cli.dir/all: CMakeFiles/studentdb.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/student_cli.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/student_cli.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles 0
 .PHONY : CMakeFiles/student_cli.dir/rule
@@ -179,7 +179,7 @@ tests/CMakeFiles/db_tests.dir/all: CMakeFiles/studentdb.dir/all
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/db_tests.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles 10
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles 11
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/CMakeFiles/db_tests.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles 0
 .PHONY : tests/CMakeFiles/db_tests.dir/rule

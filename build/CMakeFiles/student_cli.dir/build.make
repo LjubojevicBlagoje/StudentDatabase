@@ -96,6 +96,7 @@ student_cli_EXTERNAL_OBJECTS =
 student_cli: CMakeFiles/student_cli.dir/CLImain.cpp.o
 student_cli: CMakeFiles/student_cli.dir/build.make
 student_cli: libstudentdb.a
+student_cli: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/libsqlite3.tbd
 student_cli: CMakeFiles/student_cli.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable student_cli"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/student_cli.dir/link.txt --verbose=$(VERBOSE)

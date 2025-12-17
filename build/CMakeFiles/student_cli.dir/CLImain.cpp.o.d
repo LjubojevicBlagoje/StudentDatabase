@@ -791,7 +791,9 @@ CMakeFiles/student_cli.dir/CLImain.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/stack.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/print \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/unistd.h \
-  /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/Database.h \
   /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/Course.h \
+  /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/Database.h \
   /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/Enrollment.h \
+  /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/SqliteDB.h \
+  /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/external/sqlite3.h \
   /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/Student.h

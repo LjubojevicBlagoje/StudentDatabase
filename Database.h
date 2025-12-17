@@ -6,18 +6,23 @@
 
 #include "Course.h"
 #include "Enrollment.h"
+#include "SqliteDB.h"
 #include "Student.h"
 
 class Database {
  private:
+  SqliteDB db;
   // Initialise a vector of students (smart pointers)
   std::vector<std::unique_ptr<Student>> students;
   // Initialise vectors of courses and enrollments
   std::vector<Course> courses;
   std::vector<Enrollment> enrollments;
 
+  void initSchema();
+  void loadFromDb();
+
  public:
-  Database();  // Initialise
+  explicit Database(const std::string& dbPath);
 
   // Students
   bool addStudent(std::unique_ptr<Student> student);
@@ -52,7 +57,8 @@ class Database {
   // Helpers
   bool studentExists(const std::string& id) const;
   bool courseExists(const std::string& code) const;
-  int numberOfStudentsEnrolled(const std::string& code) const; // returns number of students enrolled in a course
+  int numberOfStudentsEnrolled(const std::string& code)
+      const;  // returns number of students enrolled in a course
   bool isStudentEnrolledIn(const std::string& studentId,
                            const std::string& courseCode, int year,
                            const std::string& term) const;

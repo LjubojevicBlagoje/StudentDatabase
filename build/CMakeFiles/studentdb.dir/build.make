@@ -128,12 +128,27 @@ CMakeFiles/studentdb.dir/Student.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/studentdb.dir/Student.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/Student.cpp -o CMakeFiles/studentdb.dir/Student.cpp.s
 
+CMakeFiles/studentdb.dir/SqliteDB.cpp.o: CMakeFiles/studentdb.dir/flags.make
+CMakeFiles/studentdb.dir/SqliteDB.cpp.o: /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/SqliteDB.cpp
+CMakeFiles/studentdb.dir/SqliteDB.cpp.o: CMakeFiles/studentdb.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/studentdb.dir/SqliteDB.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/studentdb.dir/SqliteDB.cpp.o -MF CMakeFiles/studentdb.dir/SqliteDB.cpp.o.d -o CMakeFiles/studentdb.dir/SqliteDB.cpp.o -c /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/SqliteDB.cpp
+
+CMakeFiles/studentdb.dir/SqliteDB.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/studentdb.dir/SqliteDB.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/SqliteDB.cpp > CMakeFiles/studentdb.dir/SqliteDB.cpp.i
+
+CMakeFiles/studentdb.dir/SqliteDB.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/studentdb.dir/SqliteDB.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/SqliteDB.cpp -o CMakeFiles/studentdb.dir/SqliteDB.cpp.s
+
 # Object files for target studentdb
 studentdb_OBJECTS = \
 "CMakeFiles/studentdb.dir/Course.cpp.o" \
 "CMakeFiles/studentdb.dir/Database.cpp.o" \
 "CMakeFiles/studentdb.dir/Enrollment.cpp.o" \
-"CMakeFiles/studentdb.dir/Student.cpp.o"
+"CMakeFiles/studentdb.dir/Student.cpp.o" \
+"CMakeFiles/studentdb.dir/SqliteDB.cpp.o"
 
 # External object files for target studentdb
 studentdb_EXTERNAL_OBJECTS =
@@ -142,9 +157,10 @@ libstudentdb.a: CMakeFiles/studentdb.dir/Course.cpp.o
 libstudentdb.a: CMakeFiles/studentdb.dir/Database.cpp.o
 libstudentdb.a: CMakeFiles/studentdb.dir/Enrollment.cpp.o
 libstudentdb.a: CMakeFiles/studentdb.dir/Student.cpp.o
+libstudentdb.a: CMakeFiles/studentdb.dir/SqliteDB.cpp.o
 libstudentdb.a: CMakeFiles/studentdb.dir/build.make
 libstudentdb.a: CMakeFiles/studentdb.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX static library libstudentdb.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX static library libstudentdb.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/studentdb.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/studentdb.dir/link.txt --verbose=$(VERBOSE)
 

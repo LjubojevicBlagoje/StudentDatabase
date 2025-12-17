@@ -251,6 +251,30 @@ Enrollment.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/studentdb.dir/build.make CMakeFiles/studentdb.dir/Enrollment.cpp.s
 .PHONY : Enrollment.cpp.s
 
+SqliteDB.o: SqliteDB.cpp.o
+.PHONY : SqliteDB.o
+
+# target to build an object file
+SqliteDB.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/studentdb.dir/build.make CMakeFiles/studentdb.dir/SqliteDB.cpp.o
+.PHONY : SqliteDB.cpp.o
+
+SqliteDB.i: SqliteDB.cpp.i
+.PHONY : SqliteDB.i
+
+# target to preprocess a source file
+SqliteDB.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/studentdb.dir/build.make CMakeFiles/studentdb.dir/SqliteDB.cpp.i
+.PHONY : SqliteDB.cpp.i
+
+SqliteDB.s: SqliteDB.cpp.s
+.PHONY : SqliteDB.s
+
+# target to generate assembly for a file
+SqliteDB.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/studentdb.dir/build.make CMakeFiles/studentdb.dir/SqliteDB.cpp.s
+.PHONY : SqliteDB.cpp.s
+
 Student.o: Student.cpp.o
 .PHONY : Student.o
 
@@ -298,6 +322,9 @@ help:
 	@echo "... Enrollment.o"
 	@echo "... Enrollment.i"
 	@echo "... Enrollment.s"
+	@echo "... SqliteDB.o"
+	@echo "... SqliteDB.i"
+	@echo "... SqliteDB.s"
 	@echo "... Student.o"
 	@echo "... Student.i"
 	@echo "... Student.s"

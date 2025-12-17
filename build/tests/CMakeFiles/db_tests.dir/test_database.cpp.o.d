@@ -806,4 +806,6 @@ tests/CMakeFiles/db_tests.dir/test_database.cpp.o: \
   /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/tests/../Database.h \
   /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/tests/../Course.h \
   /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/tests/../Enrollment.h \
+  /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/tests/../SqliteDB.h \
+  /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/external/sqlite3.h \
   /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/tests/../Student.h

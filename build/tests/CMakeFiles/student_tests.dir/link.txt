@@ -1,1 +1,0 @@
-/usr/bin/c++  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/student_tests.dir/test_database.cpp.o CMakeFiles/student_tests.dir/test_main.cpp.o CMakeFiles/student_tests.dir/test_student.cpp.o CMakeFiles/student_tests.dir/__/external/catch_amalgamated.cpp.o -o student_tests  ../libstudentdb.a

@@ -797,5 +797,7 @@ CMakeFiles/student_cli.dir/CLImain.cpp.o
  /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/Course.h
  /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/Database.h
  /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/Enrollment.h
+ /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/SqliteDB.h
  /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/Student.h
+ /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/external/sqlite3.h
 

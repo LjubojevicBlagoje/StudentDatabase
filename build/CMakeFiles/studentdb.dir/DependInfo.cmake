@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/Course.cpp" "CMakeFiles/studentdb.dir/Course.cpp.o" "gcc" "CMakeFiles/studentdb.dir/Course.cpp.o.d"
   "/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/Database.cpp" "CMakeFiles/studentdb.dir/Database.cpp.o" "gcc" "CMakeFiles/studentdb.dir/Database.cpp.o.d"
   "/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/Enrollment.cpp" "CMakeFiles/studentdb.dir/Enrollment.cpp.o" "gcc" "CMakeFiles/studentdb.dir/Enrollment.cpp.o.d"
+  "/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/SqliteDB.cpp" "CMakeFiles/studentdb.dir/SqliteDB.cpp.o" "gcc" "CMakeFiles/studentdb.dir/SqliteDB.cpp.o.d"
   "/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/Student.cpp" "CMakeFiles/studentdb.dir/Student.cpp.o" "gcc" "CMakeFiles/studentdb.dir/Student.cpp.o.d"
   )
 

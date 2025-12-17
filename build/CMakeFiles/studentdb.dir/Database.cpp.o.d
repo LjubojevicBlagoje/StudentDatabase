@@ -754,6 +754,8 @@ CMakeFiles/studentdb.dir/Database.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cstdarg \
   /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/Course.h \
   /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/Enrollment.h \
+  /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/SqliteDB.h \
+  /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/external/sqlite3.h \
   /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/Student.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/iostream \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/istream \
