@@ -24,9 +24,16 @@ bool Database::removeStudent(const std::string& id) {
   for (size_t i = 0; i < students.size(); i++) {
     if (students[i]->getId() == id) {
       students.erase(students.begin() + i);  // Remove student from the vector
+      // Delete enrollments associated with the student
+      for (size_t j = 0; j < enrollments.size(); j++) {
+        if (enrollments[j].getStudentId() == id) {
+          enrollments.erase(enrollments.begin() + j);  // Remove enrollment
+        }
+      }
       return true;
     }
   }
+
   return false;  // If no matching student is found
 };
 
