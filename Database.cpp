@@ -150,21 +150,38 @@ bool Database::addStudent(std::unique_ptr<Student> student) {
 };
 
 bool Database::removeStudent(const std::string& id) {
-  // Loop through the students vector untill matching id is found
-  for (size_t i = 0; i < students.size(); i++) {
-    if (students[i]->getId() == id) {
-      students.erase(students.begin() + i);  // Remove student from the vector
-      // Delete enrollments associated with the student
-      for (size_t j = 0; j < enrollments.size(); j++) {
-        if (enrollments[j].getStudentId() == id) {
-          enrollments.erase(enrollments.begin() + j);  // Remove enrollment
-        }
-      }
-      return true;
-    }
+  // Confirm student exists in memory
+  auto it = std::find_if(
+      students.begin(), students.end(),
+      [&](const std::unique_ptr<Student>& s) { return s->getId() == id; });
+  if (it == students.end()) return false;
+
+  const char* sql = "DELETE FROM students WHERE id=?;";
+  sqlite3_stmt* stmt = nullptr;
+
+  if (sqlite3_prepare_v2(db.raw(), sql, -1, &stmt, nullptr) != SQLITE_OK) {
+    throw std::runtime_error("prepare failed (delete student)");
   }
 
-  return false;  // If no matching student is found
+  sqlite3_bind_text(stmt, 1, id.c_str(), -1, SQLITE_TRANSIENT);
+
+  int rc = sqlite3_step(stmt);
+  int changes = sqlite3_changes(db.raw());  // how many rows were deleted
+  sqlite3_finalize(stmt);
+
+  // If nothing was deleted in DB, don't change memory
+  if (rc != SQLITE_DONE || changes == 0) return false;
+
+  // Update in-memory vectors
+  students.erase(it);
+
+  enrollments.erase(std::remove_if(enrollments.begin(), enrollments.end(),
+                                   [&](const Enrollment& e) {
+                                     return e.getStudentId() == id;
+                                   }),
+                    enrollments.end());
+
+  return true;
 };
 
 const Student* Database::findStudentById(const std::string& id) const {
@@ -181,51 +198,128 @@ const Student* Database::findStudentById(const std::string& id) const {
 bool Database::updateStudentName(const std::string& id,
                                  const std::string& newFirst,
                                  const std::string& newLast) {
-  // Iterate through students vector untill matching ID is found
-  for (size_t i = 0; i < students.size(); i++) {
-    if (students[i]->getId() == id) {
-      students[i]->setFirstName(newFirst);  // Apply new first name
-      students[i]->setLastName(newLast);    // Apply new last name
-      return true;
-    }
+  // Confirm student is in memory
+  auto it = std::find_if(
+      students.begin(), students.end(),
+      [&](const std::unique_ptr<Student>& s) { return s->getId() == id; });
+  if (it == students.end()) return false;
+
+  // Update SQLite first
+  const char* sql = "UPDATE students SET first_name=?, last_name=? WHERE id=?;";
+  sqlite3_stmt* stmt = nullptr;
+
+  if (sqlite3_prepare_v2(db.raw(), sql, -1, &stmt, nullptr) != SQLITE_OK) {
+    throw std::runtime_error("prepare failed (update student name)");
   }
-  return false;
-};
+
+  sqlite3_bind_text(stmt, 1, newFirst.c_str(), -1, SQLITE_TRANSIENT);
+  sqlite3_bind_text(stmt, 2, newLast.c_str(), -1, SQLITE_TRANSIENT);
+  sqlite3_bind_text(stmt, 3, id.c_str(), -1, SQLITE_TRANSIENT);
+
+  int rc = sqlite3_step(stmt);
+  int changes = sqlite3_changes(db.raw());
+  sqlite3_finalize(stmt);
+
+  if (rc != SQLITE_DONE || changes == 0) return false;
+
+  // Update in-memory object
+  (*it)->setFirstName(newFirst);
+  (*it)->setLastName(newLast);
+
+  return true;
+}
 
 bool Database::updateSemestersCompleted(const std::string& id, int newCount) {
-  // iterate through students vector untill matching ID is found
-  for (size_t i = 0; i < students.size(); i++) {
-    if (students[i]->getId() == id) {
-      students[i]->setSemestersCompleted(newCount);  // Apply new semester count
-      return true;
-    }
+  // Confirm student exists in memory
+  auto it = std::find_if(
+      students.begin(), students.end(),
+      [&](const std::unique_ptr<Student>& s) { return s->getId() == id; });
+  if (it == students.end()) return false;
+
+  // Update SQLite first
+  const char* sql = "UPDATE students SET semesters_completed=? WHERE id=?;";
+  sqlite3_stmt* stmt = nullptr;
+
+  if (sqlite3_prepare_v2(db.raw(), sql, -1, &stmt, nullptr) != SQLITE_OK) {
+    throw std::runtime_error("prepare failed (update semesters completed)");
   }
-  return false;
-};
+
+  sqlite3_bind_int(stmt, 1, newCount);
+  sqlite3_bind_text(stmt, 2, id.c_str(), -1, SQLITE_TRANSIENT);
+
+  int rc = sqlite3_step(stmt);
+  int changes = sqlite3_changes(db.raw());
+  sqlite3_finalize(stmt);
+
+  if (rc != SQLITE_DONE || changes == 0) return false;
+
+  // Update in-memory object
+  (*it)->setSemestersCompleted(newCount);
+
+  return true;
+}
 
 // ---------- Courses ----------
 bool Database::addCourse(const Course& course) {
   if (courseExists(course.getCode())) {  // Check if course already exists
     return false;                        // If exists, exit (do not add)
   }
-  courses.push_back(course);
+
+  const char* sql =
+      "INSERT INTO courses(code, name, units)"
+      "VALUES(?, ?, ?);";
+
+  sqlite3_stmt* stmt = nullptr;
+  if (sqlite3_prepare_v2(db.raw(), sql, -1, &stmt, nullptr) != SQLITE_OK)
+    throw std::runtime_error("prepare failed (add course)");
+
+  sqlite3_bind_text(stmt, 1, course.getCode().c_str(), -1, SQLITE_TRANSIENT);
+  sqlite3_bind_text(stmt, 2, course.getName().c_str(), -1, SQLITE_TRANSIENT);
+  sqlite3_bind_int(stmt, 3, course.getUnits());
+
+  int rc = sqlite3_step(stmt);
+  sqlite3_finalize(stmt);
+
+  if (rc != SQLITE_DONE) return false;
+
+  courses.push_back(std::move(
+      course));  // add course to in memory vector (transfer ownership)
   return true;
-}
+};
 
 bool Database::removeCourse(const std::string& code) {
-  // Loop through courses untill matching course code is found
-  for (size_t i = 0; i < courses.size(); i++) {
-    if (courses[i].getCode() == code) {
-      // Check if there are students enrolled in the course
-      if (numberOfStudentsEnrolled(code) > 0) {
-        return false;  // Cannot remove course as there are students enrolled in
-                       // it
-      }
-      courses.erase(courses.begin() + i);  // Remove course
-      return true;
-    }
+  // Confirm course exists in memory
+  auto it = std::find_if(
+      courses.begin(), courses.end(),
+      [&](const Course& c) { return c.getCode() == code; });
+  if (it == courses.end()) return false;
+
+  const char* sql = "DELETE FROM courses WHERE id=?;";
+  sqlite3_stmt* stmt = nullptr;
+
+  if (sqlite3_prepare_v2(db.raw(), sql, -1, &stmt, nullptr) != SQLITE_OK) {
+    throw std::runtime_error("prepare failed (delete course)");
   }
-  return false;  // If such course is not found
+
+  sqlite3_bind_text(stmt, 1, code.c_str(), -1, SQLITE_TRANSIENT);
+
+  int rc = sqlite3_step(stmt);
+  int changes = sqlite3_changes(db.raw());  // how many rows were deleted
+  sqlite3_finalize(stmt);
+
+  // If nothing was deleted in DB, don't change memory
+  if (rc != SQLITE_DONE || changes == 0) return false;
+
+  // Update in-memory vectors
+  courses.erase(it);
+
+  enrollments.erase(std::remove_if(enrollments.begin(), enrollments.end(),
+                                   [&](const Enrollment& e) {
+                                     return e.getCourseCode() == code;
+                                   }),
+                    enrollments.end());
+
+  return true;
 };
 
 const Course* Database::findCourseByCode(const std::string& code) const {
@@ -240,6 +334,12 @@ const Course* Database::findCourseByCode(const std::string& code) const {
 };
 
 // ---------- Enrollments ----------
+
+// ==============================================
+// TODO: IMPLEMENT SQLITE FOR ENROLLMENTS !!!
+// Follow pattern from students and enrollments
+// ==============================================
+
 bool Database::enrollStudentInCourse(const std::string& studentId,
                                      const std::string& courseCode, int year,
                                      const std::string& term, double grade) {
