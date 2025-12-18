@@ -337,7 +337,7 @@ const Course* Database::findCourseByCode(const std::string& code) const {
 
 // ==============================================
 // TODO: IMPLEMENT SQLITE FOR ENROLLMENTS !!!
-// Follow pattern from students and enrollments
+// Follow pattern from students and courses
 // ==============================================
 
 bool Database::enrollStudentInCourse(const std::string& studentId,
