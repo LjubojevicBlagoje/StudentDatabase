@@ -282,19 +282,17 @@ bool Database::addCourse(const Course& course) {
 
   if (rc != SQLITE_DONE) return false;
 
-  courses.push_back(std::move(
-      course));  // add course to in memory vector (transfer ownership)
+  courses.push_back(course);  // add course to in memory vector
   return true;
 };
 
 bool Database::removeCourse(const std::string& code) {
   // Confirm course exists in memory
-  auto it = std::find_if(
-      courses.begin(), courses.end(),
-      [&](const Course& c) { return c.getCode() == code; });
+  auto it = std::find_if(courses.begin(), courses.end(),
+                         [&](const Course& c) { return c.getCode() == code; });
   if (it == courses.end()) return false;
 
-  const char* sql = "DELETE FROM courses WHERE id=?;";
+  const char* sql = "DELETE FROM courses WHERE code=?;";
   sqlite3_stmt* stmt = nullptr;
 
   if (sqlite3_prepare_v2(db.raw(), sql, -1, &stmt, nullptr) != SQLITE_OK) {
@@ -343,24 +341,37 @@ const Course* Database::findCourseByCode(const std::string& code) const {
 bool Database::enrollStudentInCourse(const std::string& studentId,
                                      const std::string& courseCode, int year,
                                      const std::string& term, double grade) {
-  // Check if student exists
+  // Validation
   const Student* student = findStudentById(studentId);
-  if (!student) {
-    return false;
-  }
+  if (!student) return false;
 
-  // Check if course exists
   const Course* course = findCourseByCode(courseCode);
-  if (!course) {
-    return false;
-  }
+  if (!course) return false;
 
-  // Check if student is already enrolled in this course
   if (isStudentEnrolledIn(studentId, courseCode, year, term) == 1) {
     return false;
   }
 
-  // Add the enrollment
+  const char* sql =
+      "INSERT INTO enrollments(student_id, course_code, year, term, grade)"
+      "VALUES(?, ?, ?, ?, ?);";
+
+  sqlite3_stmt* stmt = nullptr;
+  if (sqlite3_prepare_v2(db.raw(), sql, -1, &stmt, nullptr) != SQLITE_OK)
+    throw std::runtime_error("prepare failed (add enrollment)");
+
+  sqlite3_bind_text(stmt, 1, studentId.c_str(), -1, SQLITE_TRANSIENT);
+  sqlite3_bind_text(stmt, 2, courseCode.c_str(), -1, SQLITE_TRANSIENT);
+  sqlite3_bind_int(stmt, 3, year);
+  sqlite3_bind_text(stmt, 4, term.c_str(), -1, SQLITE_TRANSIENT);
+  sqlite3_bind_double(stmt, 5, grade);
+
+  int rc = sqlite3_step(stmt);
+  sqlite3_finalize(stmt);
+
+  if (rc != SQLITE_DONE) return false;
+
+  // Add to in memory vector
   enrollments.emplace_back(studentId, courseCode, year, term, grade);
   return true;
 };
@@ -380,33 +391,78 @@ std::vector<Enrollment> Database::getEnrollmentsForStudent(
 bool Database::dropStudentFromCourse(const std::string& studentId,
                                      const std::string& courseCode, int year,
                                      const std::string& term) {
-  // Iterate through enrollments vector untill enrollment with matching criteria
-  // is found, then delete the enrollment
-  for (size_t i = 0; i < enrollments.size(); i++) {
-    if (enrollments[i].getStudentId() == studentId &&
-        enrollments[i].getCourseCode() == courseCode &&
-        enrollments[i].getYear() == year && enrollments[i].getTerm() == term) {
-      enrollments.erase(enrollments.begin() + i);
-      return true;
-    }
+  // Confirm existence in memory
+  auto it = std::find_if(enrollments.begin(), enrollments.end(),
+                         [&](const Enrollment& e) {
+                           return e.getStudentId() == studentId &&
+                                  e.getCourseCode() == courseCode &&
+                                  e.getYear() == year && e.getTerm() == term;
+                         });
+  if (it == enrollments.end()) return false;
+
+  // Delete from SQLite first
+  const char* sql =
+      "DELETE FROM enrollments "
+      "WHERE student_id=? AND course_code=? AND year=? AND term=?;";
+
+  sqlite3_stmt* stmt = nullptr;
+  if (sqlite3_prepare_v2(db.raw(), sql, -1, &stmt, nullptr) != SQLITE_OK) {
+    throw std::runtime_error("prepare failed (drop enrollment)");
   }
-  return false;
+
+  sqlite3_bind_text(stmt, 1, studentId.c_str(), -1, SQLITE_TRANSIENT);
+  sqlite3_bind_text(stmt, 2, courseCode.c_str(), -1, SQLITE_TRANSIENT);
+  sqlite3_bind_int(stmt, 3, year);
+  sqlite3_bind_text(stmt, 4, term.c_str(), -1, SQLITE_TRANSIENT);
+
+  int rc = sqlite3_step(stmt);
+  int changes = sqlite3_changes(db.raw());
+  sqlite3_finalize(stmt);
+
+  if (rc != SQLITE_DONE || changes == 0) return false;
+
+  // Update memory
+  enrollments.erase(it);
+  return true;
 }
 
 bool Database::updateGrade(const std::string& studentId,
                            const std::string& courseCode, int year,
                            const std::string& term, double newGrade) {
-  // Iterate through enrollments vector untill enrollment with matching criteria
-  // is found, then update grade
-  for (size_t i = 0; i < enrollments.size(); i++) {
-    if (enrollments[i].getStudentId() == studentId &&
-        enrollments[i].getCourseCode() == courseCode &&
-        enrollments[i].getYear() == year && enrollments[i].getTerm() == term) {
-      enrollments[i].setGrade(newGrade);
-      return true;
-    }
+  // Confirm enrollment exists in memory
+  auto it = std::find_if(enrollments.begin(), enrollments.end(),
+                         [&](const Enrollment& e) {
+                           return e.getStudentId() == studentId &&
+                                  e.getCourseCode() == courseCode &&
+                                  e.getYear() == year && e.getTerm() == term;
+                         });
+  if (it == enrollments.end()) return false;
+
+  // Update SQLite first
+  const char* sql =
+      "UPDATE enrollments SET grade=? "
+      "WHERE student_id=? AND course_code=? AND year=? AND term=?;";
+
+  sqlite3_stmt* stmt = nullptr;
+  if (sqlite3_prepare_v2(db.raw(), sql, -1, &stmt, nullptr) != SQLITE_OK) {
+    throw std::runtime_error("prepare failed (update grade)");
   }
-  return false;
+
+  sqlite3_bind_double(stmt, 1, newGrade);
+  sqlite3_bind_text(stmt, 2, studentId.c_str(), -1, SQLITE_TRANSIENT);
+  sqlite3_bind_text(stmt, 3, courseCode.c_str(), -1, SQLITE_TRANSIENT);
+  sqlite3_bind_int(stmt, 4, year);
+  sqlite3_bind_text(stmt, 5, term.c_str(), -1, SQLITE_TRANSIENT);
+
+  int rc = sqlite3_step(stmt);
+  int changes = sqlite3_changes(db.raw());
+  sqlite3_finalize(stmt);
+
+  if (rc != SQLITE_DONE || changes == 0) return false;
+
+  // Update memory
+  it->setGrade(newGrade);
+  return true;
 }
 
 // Compute GPA
