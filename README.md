@@ -1,76 +1,84 @@
-Student Database Management System (C++ / SQLite)
-A command-line Student Database Management System written in modern C++, using SQLite for persistent storage and an in-memory data layer for fast runtime operations.
+STUDENT DATABASE MANAGEMENT SYSTEM
 
-Features
-Add, remove, and update students
-Add and remove courses
-Enroll students in courses with year/term/grade tracking
-Drop enrollments and update grades
-Compute:
-Student GPA
-Course average grades
-Students enrolled in a specific course offering
-Persistent storage using SQLite
-Fast runtime queries using in-memory data structures
+A command-line student database system implemented in C++ using SQLite for
+persistent storage and in-memory data structures for fast runtime operations.
 
-This system intentionally separates runtime performance from persistent storage.
-Architecture
-CLI (user input)
-   ↓
-Database (business logic)
-   ↓
-In-memory vectors (fast queries)
-   ↓
-SQLite database (durable storage)
+The project demonstrates object-oriented design, safe SQLite integration,
+and a clear separation between persistence and application logic.
 
-SQLite is used for persistence, not for every query
-All data is:
-Loaded from SQLite at startup
-Stored in memory during runtime
-Written back to SQLite on every mutation
-This allows:
-Fast lookups and calculations
-Easy future optimisation (e.g. replacing vectors with hash maps or indexes)
-A clean, testable design
+FEATURES
 
-Database Schema
-The SQLite database is stored as a single file (studentdb.sqlite) and uses the following schema:
-Students
-students(
-  id TEXT PRIMARY KEY,
-  first_name TEXT,
-  last_name TEXT,
-  semesters_completed INTEGER
-)
-Courses
-courses(
-  code TEXT PRIMARY KEY,
-  name TEXT,
-  units INTEGER
-)
-Enrollments
-enrollments(
-  student_id TEXT,
-  course_code TEXT,
-  year INTEGER,
-  term TEXT,
-  grade REAL,
-  PRIMARY KEY (student_id, course_code, year, term),
-  FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE,
-  FOREIGN KEY (course_code) REFERENCES courses(code) ON DELETE RESTRICT
-)
-Foreign key constraints are enforced
-Cascading deletes ensure referential integrity
-Composite primary keys prevent duplicate enrollments
+  Add, remove, and update students
+  Add and remove courses
+  Enroll students in courses with year, term, and grade
+  Drop enrollments and update grades
+  Compute student GPA
+  Compute course average grades
+  Query students enrolled in a course
+  Persistent storage using SQLite
 
-Build & Run
-Requirements
-CMake
-SQLite3 development library
-C++17 compatible compiler
-Build
-mkdir build
-cd build
-cmake ..
-cmake --build .
-./student_cli
+DESIGN OVERVIEW
+
+The system is intentionally split into two layers:
+  Persistent storage (SQLite)
+  Runtime data structures (in-memory vectors)
+
+Data flow:
+  On startup:
+   SQLite database -> in-memory structures
+  During runtime:
+   All queries operate on in-memory data
+  On modification:
+   Write to SQLite first, then update memory
+
+This design ensures:
+  Fast read operations
+  Data integrity via SQLite constraints
+  Clean separation of concerns
+  Easy future optimisation of in-memory structures
+  DATABASE SCHEMA
+
+Students:
+id (TEXT, PRIMARY KEY)
+first_name (TEXT)
+last_name (TEXT)
+semesters_completed (INTEGER)
+
+Courses:
+code (TEXT, PRIMARY KEY)
+name (TEXT)
+units (INTEGER)
+
+Enrollments:
+student_id (TEXT)
+course_code (TEXT)
+year (INTEGER)
+term (TEXT)
+grade (REAL)
+
+PRIMARY KEY (student_id, course_code, year, term)
+FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE
+FOREIGN KEY (course_code) REFERENCES courses(code) ON DELETE RESTRICT
+Foreign key enforcement is enabled per SQLite connection.
+
+TECHNOLOGIES
+
+  C++17
+  SQLite3
+  CMake
+  RAII and smart pointers
+  Prepared SQL statements
+
+BUILD INSTRUCTIONS
+
+Requirements:
+  CMake
+  SQLite3 development library
+  C++17 compatible compiler
+
+Build:
+  mkdir build
+  cd build
+  cmake ..
+  cmake --build .
+  ./student_cli
