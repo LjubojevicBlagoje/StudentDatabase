@@ -39,22 +39,22 @@ This design ensures:
   - DATABASE SCHEMA
 
 Students:
-id (TEXT, PRIMARY KEY)
-first_name (TEXT)
-last_name (TEXT)
-semesters_completed (INTEGER)
+- id (TEXT, PRIMARY KEY)
+- first_name (TEXT)
+- last_name (TEXT)
+- semesters_completed (INTEGER)
 
 Courses:
-code (TEXT, PRIMARY KEY)
-name (TEXT)
-units (INTEGER)
+- code (TEXT, PRIMARY KEY)
+- name (TEXT)
+- units (INTEGER)
 
 Enrollments:
-student_id (TEXT)
-course_code (TEXT)
-year (INTEGER)
-term (TEXT)
-grade (REAL)
+- student_id (TEXT)
+- course_code (TEXT)
+- year (INTEGER)
+- term (TEXT)
+- grade (REAL)
 
 - PRIMARY KEY (student_id, course_code, year, term)
 - FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE
