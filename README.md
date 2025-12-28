@@ -36,7 +36,8 @@ This design ensures:
   - Data integrity via SQLite constraints
   - Clean separation of concerns
   - Easy future optimisation of in-memory structures
-  - DATABASE SCHEMA
+
+DATABASE SCHEMA
 
 Students:
 - id (TEXT, PRIMARY KEY)
