@@ -86,24 +86,10 @@ tests/CMakeFiles/db_tests.dir/test_database.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/db_tests.dir/test_database.cpp.s"
 	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/tests && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/tests/test_database.cpp -o CMakeFiles/db_tests.dir/test_database.cpp.s
 
-tests/CMakeFiles/db_tests.dir/test_main.cpp.o: tests/CMakeFiles/db_tests.dir/flags.make
-tests/CMakeFiles/db_tests.dir/test_main.cpp.o: /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/tests/test_main.cpp
-tests/CMakeFiles/db_tests.dir/test_main.cpp.o: tests/CMakeFiles/db_tests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object tests/CMakeFiles/db_tests.dir/test_main.cpp.o"
-	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/tests && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/db_tests.dir/test_main.cpp.o -MF CMakeFiles/db_tests.dir/test_main.cpp.o.d -o CMakeFiles/db_tests.dir/test_main.cpp.o -c /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/tests/test_main.cpp
-
-tests/CMakeFiles/db_tests.dir/test_main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/db_tests.dir/test_main.cpp.i"
-	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/tests && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/tests/test_main.cpp > CMakeFiles/db_tests.dir/test_main.cpp.i
-
-tests/CMakeFiles/db_tests.dir/test_main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/db_tests.dir/test_main.cpp.s"
-	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/tests && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/tests/test_main.cpp -o CMakeFiles/db_tests.dir/test_main.cpp.s
-
 tests/CMakeFiles/db_tests.dir/test_student.cpp.o: tests/CMakeFiles/db_tests.dir/flags.make
 tests/CMakeFiles/db_tests.dir/test_student.cpp.o: /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/tests/test_student.cpp
 tests/CMakeFiles/db_tests.dir/test_student.cpp.o: tests/CMakeFiles/db_tests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object tests/CMakeFiles/db_tests.dir/test_student.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object tests/CMakeFiles/db_tests.dir/test_student.cpp.o"
 	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/tests && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/db_tests.dir/test_student.cpp.o -MF CMakeFiles/db_tests.dir/test_student.cpp.o.d -o CMakeFiles/db_tests.dir/test_student.cpp.o -c /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/tests/test_student.cpp
 
 tests/CMakeFiles/db_tests.dir/test_student.cpp.i: cmake_force
@@ -117,7 +103,7 @@ tests/CMakeFiles/db_tests.dir/test_student.cpp.s: cmake_force
 tests/CMakeFiles/db_tests.dir/__/external/catch_amalgamated.cpp.o: tests/CMakeFiles/db_tests.dir/flags.make
 tests/CMakeFiles/db_tests.dir/__/external/catch_amalgamated.cpp.o: /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/external/catch_amalgamated.cpp
 tests/CMakeFiles/db_tests.dir/__/external/catch_amalgamated.cpp.o: tests/CMakeFiles/db_tests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object tests/CMakeFiles/db_tests.dir/__/external/catch_amalgamated.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object tests/CMakeFiles/db_tests.dir/__/external/catch_amalgamated.cpp.o"
 	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/tests && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/db_tests.dir/__/external/catch_amalgamated.cpp.o -MF CMakeFiles/db_tests.dir/__/external/catch_amalgamated.cpp.o.d -o CMakeFiles/db_tests.dir/__/external/catch_amalgamated.cpp.o -c /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/external/catch_amalgamated.cpp
 
 tests/CMakeFiles/db_tests.dir/__/external/catch_amalgamated.cpp.i: cmake_force
@@ -131,7 +117,6 @@ tests/CMakeFiles/db_tests.dir/__/external/catch_amalgamated.cpp.s: cmake_force
 # Object files for target db_tests
 db_tests_OBJECTS = \
 "CMakeFiles/db_tests.dir/test_database.cpp.o" \
-"CMakeFiles/db_tests.dir/test_main.cpp.o" \
 "CMakeFiles/db_tests.dir/test_student.cpp.o" \
 "CMakeFiles/db_tests.dir/__/external/catch_amalgamated.cpp.o"
 
@@ -139,14 +124,13 @@ db_tests_OBJECTS = \
 db_tests_EXTERNAL_OBJECTS =
 
 tests/db_tests: tests/CMakeFiles/db_tests.dir/test_database.cpp.o
-tests/db_tests: tests/CMakeFiles/db_tests.dir/test_main.cpp.o
 tests/db_tests: tests/CMakeFiles/db_tests.dir/test_student.cpp.o
 tests/db_tests: tests/CMakeFiles/db_tests.dir/__/external/catch_amalgamated.cpp.o
 tests/db_tests: tests/CMakeFiles/db_tests.dir/build.make
 tests/db_tests: libstudentdb.a
 tests/db_tests: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/libsqlite3.tbd
 tests/db_tests: tests/CMakeFiles/db_tests.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable db_tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable db_tests"
 	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/db_tests.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

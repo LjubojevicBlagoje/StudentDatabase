@@ -10,7 +10,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/external/catch_amalgamated.cpp" "tests/CMakeFiles/db_tests.dir/__/external/catch_amalgamated.cpp.o" "gcc" "tests/CMakeFiles/db_tests.dir/__/external/catch_amalgamated.cpp.o.d"
   "/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/tests/test_database.cpp" "tests/CMakeFiles/db_tests.dir/test_database.cpp.o" "gcc" "tests/CMakeFiles/db_tests.dir/test_database.cpp.o.d"
-  "/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/tests/test_main.cpp" "tests/CMakeFiles/db_tests.dir/test_main.cpp.o" "gcc" "tests/CMakeFiles/db_tests.dir/test_main.cpp.o.d"
   "/Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/tests/test_student.cpp" "tests/CMakeFiles/db_tests.dir/test_student.cpp.o" "gcc" "tests/CMakeFiles/db_tests.dir/test_student.cpp.o.d"
   )
 

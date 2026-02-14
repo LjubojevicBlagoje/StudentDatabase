@@ -178,30 +178,6 @@ test_database.cpp.s:
 	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/db_tests.dir/build.make tests/CMakeFiles/db_tests.dir/test_database.cpp.s
 .PHONY : test_database.cpp.s
 
-test_main.o: test_main.cpp.o
-.PHONY : test_main.o
-
-# target to build an object file
-test_main.cpp.o:
-	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/db_tests.dir/build.make tests/CMakeFiles/db_tests.dir/test_main.cpp.o
-.PHONY : test_main.cpp.o
-
-test_main.i: test_main.cpp.i
-.PHONY : test_main.i
-
-# target to preprocess a source file
-test_main.cpp.i:
-	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/db_tests.dir/build.make tests/CMakeFiles/db_tests.dir/test_main.cpp.i
-.PHONY : test_main.cpp.i
-
-test_main.s: test_main.cpp.s
-.PHONY : test_main.s
-
-# target to generate assembly for a file
-test_main.cpp.s:
-	cd /Users/blagojeljubojevic/Downloads/Projects/StudentDatabase/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/db_tests.dir/build.make tests/CMakeFiles/db_tests.dir/test_main.cpp.s
-.PHONY : test_main.cpp.s
-
 test_student.o: test_student.cpp.o
 .PHONY : test_student.o
 
@@ -241,9 +217,6 @@ help:
 	@echo "... test_database.o"
 	@echo "... test_database.i"
 	@echo "... test_database.s"
-	@echo "... test_main.o"
-	@echo "... test_main.i"
-	@echo "... test_main.s"
 	@echo "... test_student.o"
 	@echo "... test_student.i"
 	@echo "... test_student.s"

@@ -35,7 +35,6 @@ This design ensures:
   - Fast read operations
   - Data integrity via SQLite constraints
   - Clean separation of concerns
-  - Easy future optimisation of in-memory structures
 
 DATABASE SCHEMA
 
@@ -78,8 +77,13 @@ Requirements:
   - C++17 compatible compiler
 
 Build:
-  - mkdir build
   - cd build
   - cmake ..
   - cmake --build .
   - ./student_cli
+
+To run unit tests:
+  - cd build
+  - cmake ..
+  - make --build .
+  - ./tests/db_tests  
